@@ -9,7 +9,7 @@
         "anayarojo/shoppingcart": "^4.2",
         "laravel/framework": "^11.9",
         "laravel/installer": "^5.8",
-        "laravel/socialite": "*",
+        "laravel/socialite": "^5.16",
         "laravel/tinker": "^2.9",
         "laravel/ui": "^4.5",
         "livewire/livewire": "^3.5",

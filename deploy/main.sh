@@ -37,7 +37,7 @@ chmod -R 775
 
 # Configuración de MySQL
 
-ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'testroot';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'testroot123';
 
 # Configuracion de Nginx
 # Este debe de ir en /etc/nginx/sites-available/default
@@ -46,7 +46,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'testroot
 
 server {
     server_name diploy.sh;
-    root /var/www/cf-laravel-integrador/public;
+    root /var/www/proyect-laravel-fn/public;
 
     index index.php;
 
@@ -78,7 +78,7 @@ nvm install 20
 
 [program:laravel-worker]
 process_name=%(program_name)s_%(process_num)02d
-command=php /var/www/cf-laravel-integrador/artisan queue:work
+command=php /var/www/proyect-laravel-fn/artisan queue:work
 autostart=true
 autorestart=true
 stopasgroup=true

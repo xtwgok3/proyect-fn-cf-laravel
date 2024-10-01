@@ -1,4 +1,4 @@
-@servers(['web' => ['root@24.199.89.105']])
+@servers(['web' => ['root@34.225.9.184']])
 
 @task('deploy', ['on' => 'web'])
   cd /var/www/proyect-laravel-fn

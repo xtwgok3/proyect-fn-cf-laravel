@@ -24,6 +24,7 @@
                     </div>
                     <div class="col-md-4">
                         <button type="submit" class="btn btn-primary">Buscar</button>
+                        <button type="button" class="btn btn-secondary" wire:click="resetFilters">Restablecer</button>
                     </div>
                 </div>
             </form>

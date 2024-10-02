@@ -48,5 +48,11 @@ new class extends Component {
     {
         // filtra en render()
     }
+
+    public function resetFilters()
+    {
+        $this->selectedCategory = '';
+        $this->searchTerm = '';
+    }
 };
 ?>

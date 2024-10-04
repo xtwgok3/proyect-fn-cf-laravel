@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Closure;
@@ -11,18 +10,18 @@ class RoleMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (!auth()->check()) {
+        $user = Auth::user();
+
+        if (!$user) {
             // Redirige a la página de inicio de sesión si no está autenticado
-            return redirect()->route('login');
+            return redirect()->route("login");
         }
 
-        $user = auth()->user();
-
-        if (!$user || !$user->isAdmin()) {
-            return redirect()->route('home');
+        if (!$user->isAdmin()) {
+            //return redirect()->route('home');
+            return abort(401); //retorna el error de la página
         }
 
         return $next($request);
     }
 }
-

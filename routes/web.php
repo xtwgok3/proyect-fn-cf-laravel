@@ -35,22 +35,19 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/user/profile', [UserProfileController::class, 'show'])->name('profile.show');
   Route::post('/user/profile', [UserProfileController::class, 'update'])->name('profile.update');
   Route::post('/profile/delete-photo', [UserProfileController::class, 'deletePhoto'])->name('profile.deletePhoto');
-
-
-
+  Route::get('/user/profile/clear-session', function () {session()->forget(['error', 'success']);return redirect()->back();})->name('clear.session');
 
 });
 
   // Rutas protegidas para categorías
-  Route::group(['middleware' => ['admin']], function () {
-    Route::resource('products', ProductController::class);
-
-    Route::get('/categories', [ProductController::class, 'listCategories'])->name('categories.index');
-    Route::get('/categories/create', [ProductController::class, 'createCategory'])->name('categories.create');
-    Route::post('/categories', [ProductController::class, 'storeCategory'])->name('categories.store');
-    Route::get('/categories/{category}/edit', [ProductController::class, 'editCategory'])->name('categories.edit');
-    Route::put('/categories/{category}', [ProductController::class, 'updateCategory'])->name('categories.update');
-    Route::delete('/categories/{category}', [ProductController::class, 'destroyCategory'])->name('categories.destroy');
+Route::group(['middleware' => ['admin']], function () {
+  Route::resource('products', ProductController::class);
+  Route::get('/categories', [ProductController::class, 'listCategories'])->name('categories.index');
+  Route::get('/categories/create', [ProductController::class, 'createCategory'])->name('categories.create');
+  Route::post('/categories', [ProductController::class, 'storeCategory'])->name('categories.store');
+  Route::get('/categories/{category}/edit', [ProductController::class, 'editCategory'])->name('categories.edit');
+  Route::put('/categories/{category}', [ProductController::class, 'updateCategory'])->name('categories.update');
+  Route::delete('/categories/{category}', [ProductController::class, 'destroyCategory'])->name('categories.destroy');
 });
 
 

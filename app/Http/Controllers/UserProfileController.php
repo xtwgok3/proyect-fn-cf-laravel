@@ -16,9 +16,9 @@ class UserProfileController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:50|regex:/^[\p{L} .-]+$/u',
             'password' => 'nullable|string|min:6|confirmed',
-            'photo' => 'nullable|image|max:2048',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif,heic|max:2048', 
         ]);
 
         $user = Auth::user();

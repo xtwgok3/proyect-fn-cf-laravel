@@ -3,9 +3,9 @@
         <div class="row justify-content-center">
 
             @if (session('success'))
-            <div class="alert alert-primary" role="alert">
-                {{ session('success') }}
-            </div>
+                <div class="alert alert-primary" role="alert">
+                    {{ session('success') }}
+                </div>
             @endif
 
             <form wire:submit.prevent="filterProducts">
@@ -14,7 +14,7 @@
                         <select wire:model="selectedCategory" class="form-select">
                             <option value="">Todas las Categorías</option>
                             @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -29,39 +29,40 @@
                 </div>
             </form>
 
-
-            @if ($products->count() > 0)
             <div class="col-md-9">
                 @if (auth()->user()->isAdmin())
-                <div class="container mb-3">
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-sm-2 text-end">
-                            <a href="{{ route('products.create') }}" class="btn btn-primary">Crear Producto</a>
-                        </div>
-                        <div class="col-sm-2 text-end mt-3 mt-sm-0">
-                            <a href="{{ route('categories.index') }}" class="btn btn-secondary">Editar
-                                Categoria</a>
+                    <div class="container mb-3">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-sm-2 text-end">
+                                <a href="{{ route('products.create') }}" class="btn btn-primary">Crear Producto</a>
+                            </div>
+                            <div class="col-sm-2 text-end mt-3 mt-sm-0">
+                                <a href="{{ route('categories.index') }}" class="btn btn-secondary">Editar Categoria</a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endif
-
-                <div class="row">
-                    @each('products._product', $products, 'product')
-                </div>
-
-                <div class="row">
-                    {{ $products->links() }}
-                </div>
             </div>
-            @else
-            <div class="col-md-9">
-                <li class="list-group-item">
-                    <div class="text-center">
-                        <strong>No se encontró el producto.</strong>
+
+            @if ($products->count() > 0)
+                <div class="col-md-9">
+
+                    <div class="row">
+                        @each('products._product', $products, 'product')
                     </div>
-                </li>
-            </div>
+
+                    <div class="row">
+                        {{ $products->links() }}
+                    </div>
+                </div>
+            @else
+                <div class="col-md-9">
+                    <li class="list-group-item">
+                        <div class="text-center">
+                            <strong>No se encontró el producto.</strong>
+                        </div>
+                    </li>
+                </div>
             @endif
 
         </div>

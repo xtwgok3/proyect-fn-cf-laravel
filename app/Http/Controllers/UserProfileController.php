@@ -18,7 +18,7 @@ class UserProfileController extends Controller
         $request->validate([
             'name' => 'required|string|max:50|regex:/^[\p{L} .-]+$/u',
             'password' => 'nullable|string|min:6|confirmed',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif,heic|max:2048', 
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif,heic|max:2048', //sanitiza tipos de archivos y tamaño
         ]);
 
         $user = Auth::user();
@@ -36,26 +36,34 @@ class UserProfileController extends Controller
 
         $user->save();
 
-        return redirect()->route('home')->with('success', 'Perfil actualizado con éxito.');
+        return redirect()->route('profile.show')->with('success', 'Perfil actualizado con éxito.');
     }
 
 
     public function deletePhoto()
-    {
-        $user = Auth::user();
+{
+    $user = Auth::user();
+    
+    // Verificar si el usuario tiene una foto
+    if ($user->photo) {
+        // Construir la ruta correcta del archivo
+        $photoPath = storage_path('app/public/' . $user->photo);
 
-        // Eliminar la foto actual (si existe) de la carpeta
-        if ($user->photo) {
-            $photoPath = public_path('storage/' . $user->photo);
-            if (file_exists($photoPath)) {
-                unlink($photoPath);
-            }
+        // Comprobar si el archivo existe y eliminarlo
+        if (file_exists($photoPath)) {
+            unlink($photoPath);
         }
 
-        // Establecer el campo 'photo' a null
-        $user->photo = null;
-        $user->save();
+        // Limpiar el campo 'photo' y guardar el usuario
+
+        dd($user->photo);
+        $user->update(['photo' => null]);
 
         return redirect()->route('profile.show')->with('success', 'Foto de perfil eliminada con éxito.');
+    } else {
+        // Si no hay foto, redirigir con un mensaje diferente
+        return redirect()->route('profile.show')->with('info', 'No hay foto de perfil para eliminar.');
     }
+}
+
 }

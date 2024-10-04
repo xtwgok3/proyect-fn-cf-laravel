@@ -3,8 +3,21 @@
 @section('content')
 <div class="container">
     <h1>Perfil de Usuario</h1>
+
     @if (session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
+    @if (session('info'))
+    <div class="alert alert-info">
+        {{ session('info') }}
+    </div>
+    @endif
+
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
     @endif
 
     <div class="form-group mt-3">
@@ -30,8 +43,7 @@
         </div>
 
         <div class="form-group mt-3">
-            <button type="button" class="btn btn-warning" data-bs-toggle="modal" 
-            data-bs-target="#changePasswordModal"><b>Cambiar Contraseña<b></button>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#changePasswordModal"><b>Cambiar Contraseña<b></button>
         </div>
 
         <div class="form-group mt-3">
@@ -62,6 +74,8 @@
 @endsection
 <script>
     function clearSession() {
-        window.location.href = '{{ route("clear.session") }}';
+        window.location.href = '{{ route('
+        clear.session ') }}';
     }
+
 </script>

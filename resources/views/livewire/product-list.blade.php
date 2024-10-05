@@ -29,7 +29,7 @@
                 </div>
             </form>
 
-            <div class="col-md-9">
+            <div class="col-md-9" ondragstart="return false;">
                 @if (auth()->user()->isAdmin())
                     <div class="container mb-3">
                         <div class="row d-flex justify-content-center">
@@ -45,7 +45,7 @@
             </div>
 
             @if ($products->count() > 0)
-                <div class="col-md-9">
+                <div class="col-md-9" ondragstart="return false;">
 
                     <div class="row">
                         @each('products._product', $products, 'product')
@@ -56,9 +56,9 @@
                     </div>
                 </div>
             @else
-                <div class="col-md-9">
+                <div class="col-md-9" ondragstart="return false;" >
                     <li class="list-group-item">
-                        <div class="text-center">
+                        <div class="text-center" style="user-select: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); padding: 7px; border-radius: 6px;">
                             <strong>No se encontró el producto.</strong>
                         </div>
                     </li>

@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
   <div class="card">
-    <div class="card-body">
+    <div class="card-body" style="user-select: none;">
       <div class="py-5 text-center">
-        <h2>Checkout form</h2>
+        <h2 >Checkout form</h2>
         <p>REVIEW YOUR ORDER</p>
       </div>
       <div class="row">

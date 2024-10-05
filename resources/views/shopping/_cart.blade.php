@@ -16,7 +16,7 @@
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger btn-sm rounded text-white"><strong>QUITAR PRODUCTO</strong> </button>
               </form>
-              {{ $product->name }}
+              {{ $product->name }} <b>X{{ $item->qty }}</b>
             </h6>
             <small class="text-muted">{{ $product->description }}</small>
           </div>
@@ -27,13 +27,13 @@
     @endforeach
 
     <li class="list-group-item d-flex justify-content-between">
-      <span>Total (ARS)</span>
+      <span>Total (ARS)</span>(INCLUYE IVA)
       <strong>${{ cart()->total() }}</strong>
     </li>
     
   @else
     <li class="list-group-item">
-      <div class="text-center">
+      <div class="text-center" style="user-select: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); padding: 7px; border-radius: 6px;">
         <strong>No hay productos en el carrito.</strong>
       </div>
     </li>

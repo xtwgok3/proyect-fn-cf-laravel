@@ -35,7 +35,7 @@ body {padding-bottom: 0px;/* Adjust padding as needed */}
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/') }}" ondragstart="return false;">
                     <img src="{{ asset('logo.png') }}" alt="LOGO" style="height: 100px;" />
                     <STRONG>VER TIENDA</STRONG>
                 </a>
@@ -73,7 +73,7 @@ body {padding-bottom: 0px;/* Adjust padding as needed */}
                         @else
                             <livewire:cart />
 
-                            <li class="nav-item dropdown d-flex align-items-center">
+                            <li class="nav-item dropdown d-flex align-items-center" ondragstart="return false;">
 
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

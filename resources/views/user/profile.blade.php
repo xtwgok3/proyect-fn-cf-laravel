@@ -67,7 +67,7 @@
 
 @section('content')
     <div class="card container d-flex flex-column align-items-left justify-start" >
-        <h1 class="mt-3 text-center card-header"><B>PERFIL DE USUARIO</B></h1>
+        <h1 class="mt-3 text-center card-header" style="user-select: none; pointer-events: none;"><B>PERFIL DE USUARIO</B></h1>
 
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
@@ -89,7 +89,7 @@
             <img id="profile-image"
                  src="{{ Auth::user()->photo ? asset('storage/' . Auth::user()->photo) : 'https://fastly.picsum.photos/id/553/300/300.jpg?hmac=WE9FKJk4612U2gMl9W5K_2M4hVaqFL-Vg7Q7uCspY2A' }}"
                  alt="{{ Auth::user()->name }}" class=""
-                 style="width: 90px; height: 90px; border: 2px solid #ddd; border-radius:20px;">
+                 style="width: 90px; height: 90px; border: 2px solid #ddd; border-radius:20px;user-select: none; pointer-events: none;">
             <form action="{{ route('profile.deletePhoto') }}" method="POST" style="display:inline;">
               @csrf
               <button type="submit" class="btn btn-danger mt-2 d-flex justify-content-center"
@@ -108,8 +108,8 @@
             <hr> 
             <div class="form-group mt-3">
                 <label for="name"><b>Email:</b></label>
-                <input type="text" name="email" id="email" class="form-control" value="{{ $user->email }}"
-                    disabled>
+                <input type="text" name="email" id="email" class="form-control" value="{{ $user->email }} "
+                    disabled style="user-select: none; pointer-events: none;">
             </div>
             <hr> 
             <div class="form-group mt-3">

@@ -16,7 +16,7 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <link rel="icon" href="https://es.wikipedia.org/static/favicon/wikipedia.ico">
+    <link rel="icon" href="{{ asset('LOGG.png') }}">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -27,23 +27,16 @@
 .dropdown-item:active {transform: scale(0.95);/* Efecto de reducción al hacer clic */}
 main {min-height: calc(60vh - 20px);/* Adjust 70px based on your navbar height */background-color: white;}
 body {padding-bottom: 0px;/* Adjust padding as needed */}
-.social-icons i {
-    font-size: 1.5rem; /* Ajusta el tamaño según sea necesario */
-    margin-right: 0.5rem; 
-}
+.social-icons i {font-size: 1.5rem; /* Ajusta el tamaño según sea necesario */margin-right: 0.5rem; }
 </style>
 
 <body>
-    <style>
-        .card {
-            background-color: white !important;
-        }
-    </style>
+    <style>.card {background-color: white !important;}</style>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('logo.png') }}" alt="LOGO" style="height: 40px;" />
+                    <img src="{{ asset('logo.png') }}" alt="LOGO" style="height: 100px;" />
                     <STRONG>VER TIENDA</STRONG>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -163,7 +156,7 @@ body {padding-bottom: 0px;/* Adjust padding as needed */}
     });
 </script>
 <hr>
-<footer class="footer py-5 bg-dark text-light" style="margin-bottom: 0;">
+<footer class="footer py-5 bg-dark text-light" style="margin:0; width: 100%;">
     <div class="container">
         <div class="row">
             <div class="col-md-4">

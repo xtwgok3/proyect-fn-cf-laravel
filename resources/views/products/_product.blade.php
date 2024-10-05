@@ -1,4 +1,4 @@
-<div class="col-sm-4">
+<div class="col-sm-4" style="user-select: none;" ondragstart="return false;">
   <div class="card m-3" style="width: 15rem;">
 
     @if ($product->image)

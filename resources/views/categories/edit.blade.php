@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" style="user-select: none;">
     <h1>Editar Categoría</h1>
 
     <form action="{{ route('categories.update', $category) }}" method="POST">

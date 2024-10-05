@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-        <div class="container">
+        <div class="container" style="user-select: none;" ondragstart="return false;">
             <h1>Categorías</h1>
 
             @if (session('success'))

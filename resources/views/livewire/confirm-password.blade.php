@@ -1,13 +1,13 @@
 <div class="p-4 font-bold"style="user-select: none;" ondragstart="return false;">
 
     @if (session()->has('error'))
-    <div class="alert alert-danger">{{ session('error') }}</div>
+    <div class="alert alert-danger text-start">{{ session('error') }}</div>
     @elseif (session()->has('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
     @if ($errors->any())
-    <div class="alert alert-danger text-center" style="user-select: none;" ondragstart="return false;">
+    <div class="alert alert-danger text-start" style="user-select: none;" ondragstart="return false;">
         <ul class="list-unstyled">
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>

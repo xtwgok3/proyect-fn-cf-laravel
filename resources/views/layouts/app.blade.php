@@ -23,11 +23,10 @@
 </head>
 <style>
 .dropdown-item {transition: background-color 0.3s ease, color 0.3s ease;}
-.dropdown-item:hover {background-color: #f8f9fa;/* Cambia el color de fondo */color: #007bff;/* Cambia el color del texto */}
-.dropdown-item:active {transform: scale(0.95);/* Efecto de reducción al hacer clic */}
-/*main {min-height: calc(60vh - 20px);background-color: white;}
-body {padding-bottom: 0px}*/
-.social-icons i {font-size: 1.5rem; /* Ajusta el tamaño según sea necesario */margin-right: 0.5rem; }
+.dropdown-item:hover {background-color: #f8f9fa;color: #007bff;}
+.dropdown-item:active {transform: scale(0.95);}
+.social-icons i {font-size: 1.5rem; margin-right: 0.5rem;transition: transform 0.2s ease, color 0.3s ease;}
+.social-icons i:hover {transform: scale(1.5);color: #007bff;}
 </style>
 
 <body>

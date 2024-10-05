@@ -67,7 +67,7 @@
 
 @section('content')
     <div class="card container d-flex flex-column align-items-left justify-start" >
-        <h1 class="mt-3 text-center card-header">Perfil de Usuario</h1>
+        <h1 class="mt-3 text-center card-header"><B>PERFIL DE USUARIO</B></h1>
 
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>

@@ -95,7 +95,7 @@ body {padding-bottom: 0px;/* Adjust padding as needed */}
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
                                     <a class="dropdown-item" href="{{ route('profile.show') }}">
-                                        <i class="fas fa-user"></i> <strong>{{ __('Profile') }}</strong>
+                                        <i class="fas fa-user"></i> <strong>{{ __('My Profile') }}</strong>
                                     </a>
 
                                     <div class="dropdown-divider"></div>

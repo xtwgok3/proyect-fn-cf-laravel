@@ -23,7 +23,7 @@
 </head>
 <style>
 .dropdown-item {transition: background-color 0.3s ease, color 0.3s ease;}
-.dropdown-item:hover {background-color: #f8f9fa;color: #007bff;}
+.dropdown-item:hover { background-color: #f8f9fa;color: #007bff;}
 .dropdown-item:active {transform: scale(0.95);}
 .social-icons i {font-size: 1.5rem; margin-right: 0.5rem;transition: transform 0.2s ease, color 0.3s ease;}
 .social-icons i:hover {transform: scale(1.5);color: #007bff;}
@@ -159,7 +159,11 @@
     <hr>
 @endif
 
-<footer class="footer py-5 bg-dark text-light" style="margin:0; width: 100%; position:relative; bottom:0;">
+@if (request()->is('invoices'))
+<footer class="footer py-5 bg-dark text-light" style="margin:0!important; width: 100%!important; position:absolute!important; bottom:0!important;">
+@else
+<footer class="footer py-5 bg-dark text-light" style="margin:0!important; width: 100%!important; position:relative; bottom:0!important;">
+@endif
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -187,10 +191,10 @@
                     </div>
                 </form>
                 <ul class="list-inline social-icons">
-                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="https://www.linkedin.com/in/carlos-alderete-806409274/"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li class="list-inline-item"><a href="https://facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                    <li class="list-inline-item"><a href="https://github.com/xtwgok3/" target="_blank"><i class="fab fa-github"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.linkedin.com/in/carlos-alderete-806409274/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
                 </ul>
             </div>
         </div>

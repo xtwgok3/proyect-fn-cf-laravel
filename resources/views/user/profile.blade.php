@@ -66,7 +66,7 @@
 </style>
 
 @section('content')
-    <div class="card container d-flex flex-column align-items-left justify-start" >
+    <div class="card container d-flex flex-column align-items-left justify-start" style="user-select: none;" ondragstart="return false;">
         <h1 class="mt-3 text-center card-header" style="user-select: none; pointer-events: none;"><B>PERFIL DE USUARIO</B></h1>
 
         @if (session('success'))

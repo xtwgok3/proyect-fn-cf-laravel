@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="scroll-behavior: smooth;">
 
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -25,8 +25,8 @@
 .dropdown-item {transition: background-color 0.3s ease, color 0.3s ease;}
 .dropdown-item:hover {background-color: #f8f9fa;/* Cambia el color de fondo */color: #007bff;/* Cambia el color del texto */}
 .dropdown-item:active {transform: scale(0.95);/* Efecto de reducción al hacer clic */}
-main {min-height: calc(60vh - 20px);/* Adjust 70px based on your navbar height */background-color: white;}
-body {padding-bottom: 0px;/* Adjust padding as needed */}
+/*main {min-height: calc(60vh - 20px);background-color: white;}
+body {padding-bottom: 0px}*/
 .social-icons i {font-size: 1.5rem; /* Ajusta el tamaño según sea necesario */margin-right: 0.5rem; }
 </style>
 
@@ -155,8 +155,12 @@ body {padding-bottom: 0px;/* Adjust padding as needed */}
         });
     });
 </script>
-<hr>
-<footer class="footer py-5 bg-dark text-light" style="margin:0; width: 100%;">
+
+@if (!request()->is('login') && !request()->is('register'))
+    <hr>
+@endif
+
+<footer class="footer py-5 bg-dark text-light" style="margin:0; width: 100%; position:relative; bottom:0;">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -187,7 +191,7 @@ body {padding-bottom: 0px;/* Adjust padding as needed */}
                     <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                     <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
                     <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.linkedin.com/in/carlos-alderete-806409274/"><i class="fab fa-linkedin-in"></i></a></li>
                 </ul>
             </div>
         </div>

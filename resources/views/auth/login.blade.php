@@ -1,7 +1,9 @@
 @extends('layouts.app') 
 
+<style>footer {margin:0; width: 100%; position:absolute!important; bottom:0;}</style>
+
 @section('content') 
-<div class="container">
+<div class="container" style="user-select: none;" ondragstart="return false;">
     <div class="row justify-content-center ">
       <div class="col-md-7 items-center">
         <div class="card">

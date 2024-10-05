@@ -2,16 +2,16 @@
   <div class="card m-3" style="width: 15rem;">
 
     @if ($product->image)
-      <img src="{{ asset($product->image) }}" class="card-img-top" alt="...">
+      <img src="{{ asset($product->image) }}" class="card-img-top" alt="..." style="width: 100%;">
     @else
-      <img src="https://placehold.co/600x400" class="card-img-top" alt="...">
+      <img src="https://placehold.co/600x400" class="card-img-top" alt="..."style="width: 100%; ">
     @endif
     
     <div class="card-body">
 
-      <h5 class="card-title">
-        {{ $product->name }}
-      </h5>
+      <h6 class="card-title">
+        <b>{{ $product->name }}<b>
+      </h6>
 
       <p class="card-text text-lg"><strong style="color: black;">$ARS {{ str($product->price) }}</p></strong> 
       <p class="card-text">{{ str($product->description)->limit(20) }} </p>

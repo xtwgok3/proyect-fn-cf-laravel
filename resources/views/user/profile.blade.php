@@ -153,6 +153,7 @@
         </div>
     </div>
 @endsection
+
 <script>
     function clearSession() {
         window.location.href = '{{ route('clear.session') }}';

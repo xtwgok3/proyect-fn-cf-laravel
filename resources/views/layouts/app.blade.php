@@ -32,7 +32,7 @@
 <body>
     <style>.card {background-color: white !important;}</style>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="user-select: none;" ondragstart="return false;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}" ondragstart="return false;">
                     <img src="{{ asset('logo.png') }}" alt="LOGO" style="height: 100px;" />

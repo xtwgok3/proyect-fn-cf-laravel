@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row d-flex justify-content-center">
+<div class="row d-flex justify-content-center" style="user-select: none;" ondragstart="return false;">
   <div class="col-sm-5">
     <div class="card">
       <div class="card-body">

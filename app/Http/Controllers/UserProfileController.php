@@ -18,7 +18,7 @@ class UserProfileController extends Controller
         $request->validate([
             'name' => 'required|string|max:50|regex:/^[\p{L} .-]+$/u',
             'password' => 'nullable|string|min:6|confirmed',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif,heic|max:2048', //sanitiza tipos de archivos y tamaño
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif,heic|max:2048',
         ]);
 
         $user = Auth::user();
@@ -36,7 +36,7 @@ class UserProfileController extends Controller
 
         $user->save();
 
-        return redirect()->route('profile.show')->with('success', 'Perfil actualizado con éxito.');
+        return redirect()->route('home')->with('success', 'Perfil actualizado con éxito.');
     }
 
 

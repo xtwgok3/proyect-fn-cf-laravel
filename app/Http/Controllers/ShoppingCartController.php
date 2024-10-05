@@ -27,6 +27,4 @@ public function remove($rowId){
     return redirect()->route('checkout')->with('success', 'Producto eliminado del carrito.');
 }
 
-
-
 }

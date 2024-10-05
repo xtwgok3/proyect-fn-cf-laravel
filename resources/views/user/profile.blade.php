@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 <style>.modal-open {overflow: hidden;}.modal-open .container {filter: blur(5px);}
-.modal-title {
-  color: grey;
-}
+.modal-title {color: grey;}
 .modal-body {
   font-family: Arial, sans-serif;
 }
@@ -67,24 +65,34 @@
 
 @section('content')
     <div class="card container d-flex flex-column align-items-left justify-start" style="user-select: none;" ondragstart="return false;">
-        <h1 class="mt-3 text-center card-header" style="user-select: none; pointer-events: none;"><B>PERFIL DE USUARIO</B></h1>
+        <h1 class="mt-3 text-center card-header mb-1" style="user-select: none; pointer-events: none;"><B>PERFIL DE USUARIO</B></h1>
 
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
         @if (session('info'))
-            <div class="alert alert-info">
+            <div class="alert alert-info" style="user-select: none;" ondragstart="return false;">
                 {{ session('info') }}
             </div>
         @endif
 
         @if (session('error'))
-            <div class="alert alert-danger">
+            <div class="alert alert-danger"style="user-select: none;" ondragstart="return false;">
                 {{ session('error') }}
             </div>
         @endif
 
+        
+@if ($errors->any())
+    <div class="alert alert-danger text-center" style="user-select: none;" ondragstart="return false;">
+        <ul class="list-unstyled">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
         <div class="form-group mt-3 line d-flex flex-column align-items-center">
             <img id="profile-image"
                  src="{{ Auth::user()->photo ? asset('storage/' . Auth::user()->photo) : 'https://fastly.picsum.photos/id/553/300/300.jpg?hmac=WE9FKJk4612U2gMl9W5K_2M4hVaqFL-Vg7Q7uCspY2A' }}"
@@ -134,7 +142,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="changePasswordModalLabel">Cambiar Contraseña</h5>
+                    <h5 class="modal-title" id="changePasswordModalLabel" style="user-select: none;" ondragstart="return false;">Cambiar Contraseña</h5>
                     <button type="button" onclick="clearSession()" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>

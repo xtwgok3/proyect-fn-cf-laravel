@@ -1,6 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if (session('success'))
+<div class="alert alert-success text-center" style="user-select: none;" ondragstart="return false;">{{ session('success') }}</div>
+@endif
+
+@if (session('info'))
+<div class="alert alert-info text-center" style="user-select: none;" ondragstart="return false;">
+    {{ session('info') }}
+</div>
+@endif
+
+@if (session('error'))
+<div class="alert alert-danger text-center" style="user-select: none;" ondragstart="return false;">
+    {{ session('error') }}
+</div>
+@endif
+
+@if ($errors->any())
+    <div class="alert alert-danger text-center" style="user-select: none;" ondragstart="return false;">
+        <ul class="list-unstyled">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<hr>
 <div class="container" style="user-select: none;">
     <h1>Editar Categoría</h1>
 

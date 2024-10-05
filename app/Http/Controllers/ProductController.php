@@ -25,10 +25,38 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        Product::create($this->getParams($request));
+        // Validación para asegurarse de que el producto no esté vacío
+        $request->validate([
+            'name' => 'required|string|max:50|regex:/^[\p{L}\s]+$/u', // Solo letras y espacios
+            'description' => 'required|string|max:150|regex:/^[\p{L}\s.,;:!?-]+$/u', // Solo letras y algunos símbolos permitidos
+            'price' => 'required|numeric|min:100',
+            'category_id' => 'required|exists:categories,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif,heic|max:2048', ],
+            [
+                'name.required' => 'Rellene el campo nombre.',
+                'description.required' => 'Rellene el campo descripción.',
+                'price.required' => 'Rellene el campo precio.',
+                'price.numeric' => 'El precio debe ser un número válido.',
+                'price.min' => 'El precio debe ser mayor que $100.',
+                'category_id.required' => 'Seleccione una categoría.',
+                'image.image' => 'El archivo debe ser una imagen válida.',
+                'name.regex' => 'El nombre solo puede contener letras y espacios.',
+                'description.regex' => 'La descripción solo puede contener letras y ciertos símbolos.',
+            ]);
+            
+            // Sanitización de los datos de entrada
+            $data = $request->only('name', 'description', 'price', 'category_id');
+            $data['price'] = floatval($data['price']);
+            if ($request->hasFile('image')) {
+                $data['image'] = $request->file('image');
+            }
 
-        return redirect('/home')->with('success', 'Product created successfully');
+        //Product::create($this->getParams($request));
+        Product::create(array_merge($data, $this->getParams($request)));
+
+        return redirect('/home')->with('success', 'Producto creado con éxito.');
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -89,7 +117,11 @@ public function createCategory()
     public function storeCategory(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:25|regex:/^[\p{L} .-]+$/u',
+        ], [
+            'name.required' => 'Rellene el campo nombre.',
+            'name.max' => 'El nombre no puede ser más de 25 caracteres.',
+            'name.regex' => 'El nombre solo puede contener letras, espacios y algunos símbolos.',
         ]);
 
         Category::create($request->only('name'));
@@ -107,12 +139,19 @@ public function createCategory()
     public function updateCategory(Request $request, Category $category)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:25|regex:/^[\p{L} .-]+$/u',
+        ], [
+            'name.required' => 'Rellene el campo nombre.',
+            'name.max' => 'El nombre no puede ser más de 25 caracteres.',
+            'name.regex' => 'El nombre solo puede contener letras, espacios y algunos símbolos.',
         ]);
-
-        $category->update($request->only('name'));
-
-        return redirect()->route('categories.index')->with('success', 'Categoría actualizada con éxito.');
+    
+        if ($category->name !== $request->name) {
+            $category->update($request->only('name'));
+            return redirect()->route('categories.index')->with('success', 'Categoría actualizada con éxito.');
+        } else {
+            return redirect()->route('categories.edit', $category->id)->with('info', 'No se realizaron cambios.');
+        }
     }
 
     // Método para eliminar una categoría

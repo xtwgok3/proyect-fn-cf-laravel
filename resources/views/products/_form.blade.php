@@ -1,4 +1,15 @@
 @csrf
+<style>.alert-success,.alert-info,.alert-danger {background-color: #ffb0b0;border-color: #ddd;}</style>
+
+@if ($errors->any())
+    <div class="alert alert-danger" style="user-select: none;" ondragstart="return false;">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 @if (request()->path() !== 'products/create')
 <div class="mb-3">

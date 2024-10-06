@@ -1,3 +1,15 @@
+@if (request()->is('home') && preg_match('/mobile/i', request()->header('User-Agent')))
+<style>
+#pdr {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    text-align: center; }
+</style>
+@endif
+
 <div>
     <div class="container">
         <div class="row justify-content-center">
@@ -33,7 +45,7 @@
                 @if (auth()->user()->isAdmin())
                     <div class="container mb-3">
                         <div class="row d-flex justify-content-center">
-                            <div class="col-sm-2 text-end">
+                            <div id="btnpdr"class="col-sm-2 text-end">
                                 <a href="{{ route('products.create') }}" class="btn btn-primary">Crear Producto</a>
                             </div>
                             <div class="col-sm-2 text-end mt-3 mt-sm-0">
@@ -45,7 +57,7 @@
             </div>
 
             @if ($products->count() > 0)
-                <div class="col-md-9" ondragstart="return false;">
+                <div id="pdr" class="col-md-9" ondragstart="return false;">
 
                     <div class="row">
                         @each('products._product', $products, 'product')

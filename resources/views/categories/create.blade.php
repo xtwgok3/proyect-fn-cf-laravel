@@ -1,4 +1,23 @@
 @extends('layouts.app')
+@if (request()->is('categories/create')&& !preg_match('/mobile/i', request()->header('User-Agent')))
+<style>
+    footer {
+        margin: 0;
+        width: 100%;
+        position: fixed !important;
+        bottom: 0;
+    }
+</style>
+@else
+<style>
+    footer {
+        margin-top: 20px;
+    }
+    #github{ margin-top:12px }
+</style>
+@endif
+
+
 
 @section('content')
 
@@ -12,7 +31,7 @@
     </div>
 @endif
 <hr>
-<div class="container"style="user-select: none;">
+<div class="container  mb-3"style="user-select: none;">
     <h1>Crear Categoría</h1>
 
     <form action="{{ route('categories.store') }}" method="POST">

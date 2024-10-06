@@ -1,24 +1,5 @@
 @extends('layouts.app')
 
-@if (preg_match('/^categories\/\d+\/edit$/', request()->path()) && !preg_match('/mobile/i', request()->header('User-Agent')))
-<style>
-    footer {
-        margin: 0;
-        width: 100%;
-        position: absolute!important;
-        bottom: 0;
-    }
-</style>
-@else
-<style>
-    footer {
-        margin-top: 20px;
-    }
-    #github { margin-top: 12px; }
-</style>
-@endif
-
-
 @section('content')
 
 @if (session('success'))

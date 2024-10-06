@@ -5,49 +5,23 @@
 .modal-body {
   font-family: Arial, sans-serif;
 }
-.modal-body p {
-  font-size: 16px;
-}
-.card.container {
-    width: 40rem; /* Adjusted width */
-    margin: 0 auto; /* Centered card */
-  }
-
-  .card-header {
-    font-size: 1.8rem; /* Increased title size */
-    color: #2C3E50; /* Dark blue title color */
-  }
+.modal-body p {font-size: 16px;}
+.card.container {width: 40rem;margin: 0 auto; }
+.card-header {font-size: 1.8rem; color: #2C3E50;}
 
   .alert-success,
   .alert-info,
-  .alert-danger {
-    background-color: #f5f5f5; /* Lighter background for alerts */
-    border-color: #ddd;
-  }
+  .alert-danger {background-color: #f5f5f5;border-color: #ddd;}
 
-  .profile-image { /* New class for profile picture */
-    width: 90px;
-    height: 90px;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-  }
+  .profile-image {  width: 90px;height: 90px;border: 1px solid #ddd;border-radius: 20px;}
 
-  label {
-    font-size: 0.8rem;
-    font-weight: bold;
-  }
+  label {font-size: 0.8rem;font-weight: bold;}
 
-  .form-control {
-    border-color: #ccc;
-    background-color: #f9f9f9;
-    padding: 8px 12px;
-  }
+  .form-control {border-color: #ccc;background-color: #f9f9f9;padding: 8px 12px;}
 
   .btn-primary,
   .btn-warning,
-  .btn-secondary { /* Modified button styles */
-    border-color: #ddd;
-  }
+  .btn-secondary { border-color: #ddd;}
 
   .btn-primary {
     background-color: #007bff; /* Blue primary button */
@@ -64,7 +38,7 @@
 </style>
 
 @section('content')
-    <div class="card container d-flex flex-column align-items-left justify-start" style="user-select: none;" ondragstart="return false;">
+    <div class="card container d-flex flex-column align-items-left justify-start mt-3" style="user-select: none;" ondragstart="return false;">
         <h1 class="mt-3 text-center card-header mb-1" style="user-select: none; pointer-events: none;"><B>PERFIL DE USUARIO</B></h1>
 
         @if (session('success'))
@@ -152,6 +126,7 @@
             </div>
         </div>
     </div>
+    <hr>
 @endsection
 
 <script>

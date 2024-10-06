@@ -20,19 +20,25 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @livewireStyles
+    @livewireScripts
 </head>
+
 <style>
 .dropdown-item {transition: background-color 0.3s ease, color 0.3s ease;}
-.dropdown-item:hover { background-color: #f8f9fa;color: #007bff;}
+.dropdown-item:hover {background-color: #f8f9fa;color: #007bff;}
 .dropdown-item:active {transform: scale(0.95);}
-.social-icons i {font-size: 1.5rem; margin-right: 0.5rem;transition: transform 0.2s ease, color 0.3s ease;}
+.social-icons i {font-size: 1.5rem;margin-right: 0.5rem;transition: transform 0.2s ease, color 0.3s ease;}
 .social-icons i:hover {transform: scale(1.5);color: #007bff;}
 </style>
 
+<style>.card {background-color: white}/*card product*/</style>
+
 <body>
-    <style>.card {background-color: white !important;}</style>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="user-select: none;" ondragstart="return false;">
+    <div id="app" class="{{ session('theme', 'light') }}">
+        <!--livewire:theme-toggle /-->
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="user-select: none;"
+            ondragstart="return false;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}" ondragstart="return false;">
                     <img src="{{ asset('logo.png') }}" alt="LOGO" style="height: 100px;" />
@@ -58,74 +64,124 @@
                     <ul class="navbar-nav ms-auto mt-2">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+                        @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @endif
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                        @endif
                         @else
-                            <livewire:cart />
+                        <livewire:cart />
 
-                            <li class="nav-item dropdown d-flex align-items-center" ondragstart="return false;">
+                        <li class="nav-item dropdown d-flex align-items-center" ondragstart="return false;">
 
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 
-                                    @if (Auth::user()->photo)
-                                        <img src="{{ asset('storage/' . Auth::user()->photo) }}"
-                                            alt="{{ Auth::user()->name }}" class="rounded-circle border"
-                                            style="width: 80px; height: 80px; margin-left: 8px; border: 2px solid #ddd;">
-                                    @else
-                                        <img src="https://fastly.picsum.photos/id/553/300/300.jpg?hmac=WE9FKJk4612U2gMl9W5K_2M4hVaqFL-Vg7Q7uCspY2A"
-                                            alt="{{ Auth::user()->name }}" class="rounded-circle border"
-                                            style="width: 80px; height: 80px; margin-left: 8px; border: 2px solid #ddd;">
-                                    @endif
-                                    <!--nombre perfil-->
-                                    <strong> {{ strtoupper(Auth::user()->name) }}</strong>
+                                @if (Auth::user()->photo)
+                                <img src="{{ asset('storage/' . Auth::user()->photo) }}" alt="{{ Auth::user()->name }}"
+                                    class="rounded-circle border"
+                                    style="width: 80px; height: 80px; margin-left: 8px; border: 2px solid #ddd;">
+                                @else
+                                <img src="https://fastly.picsum.photos/id/553/300/300.jpg?hmac=WE9FKJk4612U2gMl9W5K_2M4hVaqFL-Vg7Q7uCspY2A"
+                                    alt="{{ Auth::user()->name }}" class="rounded-circle border"
+                                    style="width: 80px; height: 80px; margin-left: 8px; border: 2px solid #ddd;">
+                                @endif
+                                <!--nombre perfil-->
+                                <strong> {{ strtoupper(Auth::user()->name) }}</strong>
 
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                                <a class="dropdown-item" href="{{ route('profile.show') }}">
+                                    <i class="fas fa-user"></i> <strong>{{ __('My Profile') }}</strong>
+                                </a>
+                                <a class="dropdown-item" wire:click="toggleTheme">
+                                    <i class="fas fa-adjust"></i> <strong>{{ __('Toggle Theme') }}</strong>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-divider"></div>
 
-                                    <a class="dropdown-item" href="{{ route('profile.show') }}">
-                                        <i class="fas fa-user"></i> <strong>{{ __('My Profile') }}</strong>
-                                    </a>
+                                <a class="dropdown-item" href="{{ route('invoices.index') }}">
+                                    <i class="fas fa-file-invoice"></i> <strong>{{ __('Facturas') }}</strong>
+                                </a>
 
-                                    <div class="dropdown-divider"></div>
+                                <div class="dropdown-divider"></div>
 
-                                    <a class="dropdown-item" href="{{ route('invoices.index') }}">
-                                        <i class="fas fa-file-invoice"></i> <strong>{{ __('Facturas') }}</strong>
-                                    </a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-sign-out-alt"></i> <strong>{{ __('Logout') }}</strong>
+                                </a>
 
-                                    <div class="dropdown-divider"></div>
-
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                        <i class="fas fa-sign-out-alt"></i> <strong>{{ __('Logout') }}</strong>
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
-
-        <main class="py-4" style="background-color: white;">
-            @yield('content')
-        </main>
-        
     </div>
+    
+    <main class="{{ session('theme', 'light') }}">
+        @yield('content')
+    </main>
+
+    <footer class="footer py-5 bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Acerca de Nosotros</h5>
+                    <p>Breve descripción de tu empresa o aplicación.</p>
+                    <p>Información de contacto: correo electrónico, teléfono, redes sociales.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Productos</a></li>
+                        <li><a href="#">Servicios</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Boletín Informativo</h5>
+                    <form>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" disabled placeholder="Tu correo electrónico"
+                                aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-secondary" disabled type="button"
+                                id="button-addon2">Suscribirse</button-->
+                        </div>
+                    </form>
+                    <ul class="list-inline social-icons">
+                        <li class="list-inline-item"><a href="https://facebook.com/" target="_blank"><i
+                                    class="fab fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="https://github.com/xtwgok3/" target="_blank"><i
+                                    class="fab fa-github"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/" target="_blank"><i
+                                    class="fab fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.linkedin.com/in/carlos-alderete-806409274/"
+                                target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>&copy; {{ now()->year }} Tu Empresa. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
 <script>
     function confirmDelete() {
@@ -137,13 +193,13 @@
             const product = this.getAttribute('data-id');
 
             fetch(`/add-to-cart/${product}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                    method: 'POST'
+                    , headers: {
+                        'Content-Type': 'application/json'
+                        , 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
                             .getAttribute('content')
-                    },
-                    body: JSON.stringify({
+                    }
+                    , body: JSON.stringify({
                         quantity: 1
                     })
                 })
@@ -153,56 +209,6 @@
                 });
         });
     });
+
 </script>
-
-@if (!request()->is('login') && !request()->is('register'))
-    <hr>
-@endif
-
-@if (request()->is('invoices'))
-<footer class="footer py-5 bg-dark text-light" style="margin:0!important; width: 100%!important; position:absolute!important; bottom:0!important;">
-@else
-<footer class="footer py-5 bg-dark text-light" style="margin:0!important; width: 100%!important; position:relative; bottom:0!important;">
-@endif
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h5>Acerca de Nosotros</h5>
-                <p>Breve descripción de tu empresa o aplicación.</p>
-                <p>Información de contacto: correo electrónico, teléfono, redes sociales.</p>
-            </div>
-            <div class="col-md-4">
-                <h5>Enlaces Rápidos</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Productos</a></li>
-                    <li><a href="#">Servicios</a></li>
-                    <li><a href="#">Contacto</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h5>Boletín Informativo</h5>
-                <form>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control"  disabled placeholder="Tu correo electrónico"
-                            aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-secondary" disabled type="button"
-                            id="button-addon2">Suscribirse</button-->
-                    </div>
-                </form>
-                <ul class="list-inline social-icons">
-                    <li class="list-inline-item"><a href="https://facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="https://github.com/xtwgok3/" target="_blank"><i class="fab fa-github"></i></a></li>
-                    <li class="list-inline-item"><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="https://www.linkedin.com/in/carlos-alderete-806409274/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <p>&copy; {{ now()->year }} Tu Empresa. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </div>
-</footer>
 </html>

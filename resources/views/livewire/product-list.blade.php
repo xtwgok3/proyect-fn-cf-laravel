@@ -9,7 +9,7 @@
             @endif
 
             <form wire:submit.prevent="filterProducts">
-                <div class="row mb-3">
+                <div class="row mb-3 mt-3">
                     <div class="col-md-4">
                         <select wire:model="selectedCategory" class="form-select">
                             <option value="">Todas las Categorías</option>

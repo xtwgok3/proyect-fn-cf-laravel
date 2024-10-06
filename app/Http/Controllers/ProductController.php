@@ -63,8 +63,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        
         return view('products.edit', [
             'product' => $product,
+
+
             'categories' => Category::all()
         ]);
     }
@@ -74,10 +77,53 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->update($this->getParams($request));
-
-        return redirect('/home');
+        // Validar los datos de entrada
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:50|regex:/^[\p{L}\s]+$/u', // Solo letras y espacios
+            'description' => 'required|string|max:150|regex:/^[\p{L}\s.,;:!?-]+$/u', // Solo letras y algunos símbolos permitidos
+            'price' => 'required|numeric|min:100',
+            'category_id' => 'required|exists:categories,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif,heic|max:2048',
+        ], [
+            'name.required' => 'Rellene el campo nombre.',
+            'description.required' => 'Rellene el campo descripción.',
+            'price.required' => 'Rellene el campo precio.',
+            'price.numeric' => 'El precio debe ser un número válido.',
+            'price.min' => 'El precio debe ser mayor que $100.',
+            'category_id.required' => 'Seleccione una categoría.',
+            'image.image' => 'El archivo debe ser una imagen válida.',
+            'name.regex' => 'El nombre solo puede contener letras y espacios.',
+            'description.regex' => 'La descripción solo puede contener letras y ciertos símbolos.',
+        ]);
+    
+        // Comprobar si los datos han cambiado
+        $hasChanges = false;
+    
+        // Compara los valores antiguos y nuevos usando &&
+        if ((
+            $product->name === $validatedData['name'] &&
+            $product->description === $validatedData['description'] &&
+            $product->price === $validatedData['price'] &&
+            $product->category_id === $validatedData['category_id']
+        )) {
+            // Actualizar el producto con los datos validados
+            $product->update($this->getParams($request));
+            
+            $hasChanges = true;
+        }
+    
+        // Redireccionar con mensajes
+        if ($hasChanges) {
+            return redirect('/home')->with('success', 'Producto actualizado con éxito.');
+        } else {
+            return redirect()->back()->with('info', 'No realizaste cambios.');
+        }
     }
+    
+
+
+
+
 
     /**
      * Remove the specified resource from storage.

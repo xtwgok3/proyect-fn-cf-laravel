@@ -1,7 +1,23 @@
 @extends('layouts.app')
-
+@if (request()->is('invoices')&& !preg_match('/mobile/i', request()->header('User-Agent')))
+<style>
+    footer {
+        margin: 0;
+        width: 100%;
+        position: fixed !important;
+        bottom: 0;
+    }
+</style>
+@else
+<style>
+    footer {
+        margin-top: 20px;
+    }
+    #github{ margin-top:12px }
+</style>
+@endif
 @section('content')
-<div class="row d-flex justify-content-center" style="user-select: none;" ondragstart="return false;">
+<div class="row d-flex justify-content-center mt-3" style="user-select: none;" ondragstart="return false;">
   <div class="col-sm-5">
     <div class="card">
       <div class="card-body">

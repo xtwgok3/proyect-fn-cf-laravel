@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
   // Rutas protegidas para categorías
 Route::group(['middleware' => ['admin']], function () {
   Route::resource('products', ProductController::class);
+  
   Route::get('/categories', [ProductController::class, 'listCategories'])->name('categories.index');
   Route::get('/categories/create', [ProductController::class, 'createCategory'])->name('categories.create');
   Route::post('/categories', [ProductController::class, 'storeCategory'])->name('categories.store');

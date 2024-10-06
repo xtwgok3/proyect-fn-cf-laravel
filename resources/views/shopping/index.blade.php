@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-3">
+<div class="container mt-3 mb-3">
   <div class="card">
     <div class="card-body" style="user-select: none;">
       <div class="py-5 text-center">

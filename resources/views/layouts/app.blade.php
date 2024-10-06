@@ -163,12 +163,12 @@
                         </div>
                     </form>
                     <ul class="list-inline social-icons">
-                        <li class="list-inline-item"><a href="https://facebook.com/" target="_blank"><i
-                                    class="fab fa-facebook-f"></i></a></li>
+                        <!--li class="list-inline-item"><a href="https://facebook.com/" target="_blank"><i
+                                    class="fab fa-facebook-f"></i></a></li-->
                         <li class="list-inline-item"><a href="https://github.com/xtwgok3/" target="_blank"><i
                                     class="fab fa-github"></i></a></li>
-                        <li class="list-inline-item"><a href="https://www.instagram.com/" target="_blank"><i
-                                    class="fab fa-instagram"></i></a></li>
+                        <!--li class="list-inline-item"><a href="https://www.instagram.com/" target="_blank"><i
+                                    class="fab fa-instagram"></i></a></li-->
                         <li class="list-inline-item"><a href="https://www.linkedin.com/in/carlos-alderete-806409274/"
                                 target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
                     </ul>

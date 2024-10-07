@@ -42,3 +42,4 @@
         </div>
     </div>
 </div>
+@include('livewire.btn_up')

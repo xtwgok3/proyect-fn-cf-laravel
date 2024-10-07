@@ -1,5 +1,5 @@
 <div class="col-sm-4" style="user-select: none;" ondragstart="return false;">
-  <div class="card m-3" style="width: 15rem;">
+  <div class="card m-3 themeable" style="width: 15rem;">
 
     @if ($product->image)
       <img src="{{ asset($product->image) }}" class="card-img-top" alt="..." style="width: 100%;">
@@ -7,13 +7,13 @@
       <img src="https://placehold.co/600x400" class="card-img-top" alt="..."style="width: 100%; ">
     @endif
     
-    <div class="card-body">
+    <div id="dsa" class="card-body">
 
       <h6 class="card-title">
         <b>{{ $product->name }}<b>
       </h6>
 
-      <p class="card-text text-lg"><strong style="color: black;">$ARS {{ str($product->price) }}</p></strong> 
+      <p class="card-text text-lg"><strong >$ARS {{ str($product->price) }}</p></strong> 
       <p class="card-text">{{ str($product->description)->limit(20) }} </p>
 
       <form id="deleteProductForm"

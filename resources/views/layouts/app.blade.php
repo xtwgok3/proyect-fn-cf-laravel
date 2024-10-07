@@ -42,16 +42,6 @@ main {flex: 1;}
     --nav-bg-color: white;
 }
 
-body.light-theme {
-    --background-color: #f8f9fa!important;
-    --text-color: #212529;
-    --nav-bg-color: white;
-}
-
-body.dark-theme {
-    --background-color: #343a40!important;
-    --text-color: #f8f9fa;
-}
 
 body {
     background-color: var(--background-color);
@@ -63,7 +53,7 @@ body {
 }
 
 </style>
-<style>.card {background-color: white}/*card product*/</style>
+<!--style>.card {background-color: white}/*card product*/</style-->
 
 </head>
 
@@ -80,9 +70,7 @@ body {
 
     <main class="container d-flex flex-column {{ session('theme', 'light') }}">
         <div class="row justify-content-center ">
-            
             @yield('content')
-
         </div>
     </main>
 

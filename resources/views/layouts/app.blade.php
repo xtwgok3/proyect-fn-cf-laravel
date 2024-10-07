@@ -15,7 +15,7 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <link rel="icon" href="{{ asset('LOGG.png') }}">
+    <link rel="icon" href="{{ asset('LOGG2.png') }}" >
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -58,6 +58,10 @@ body {
     color: var(--text-color);
 }
 
+#navbarSupportedContent{
+    margin-left: 20!important;
+}
+
 </style>
 <style>.card {background-color: white}/*card product*/</style>
 
@@ -67,14 +71,14 @@ body {
 <div id="app" class="{{ session('theme', 'light') }}">
     <header>
         <nav class="navbar navbar-expand-md navbar-light shadow-sm " style="user-select: none;" ondragstart="return false;">
-            <div class="container-fluid"><!-- rellena ancho: container-fluid-->
+            <div class="container"><!-- rellena ancho: container-fluid-->
                 @include('partials.header')
             </div>
         </nav>
     </header>
 </div>
 
-    <main class="container-fluid d-flex flex-column {{ session('theme', 'light') }}">
+    <main class="container d-flex flex-column {{ session('theme', 'light') }}">
         <div class="row justify-content-center ">
             
             @yield('content')

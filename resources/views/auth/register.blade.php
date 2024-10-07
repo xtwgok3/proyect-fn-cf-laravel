@@ -1,5 +1,10 @@
 @extends('layouts.app')
 @if (request()->is('register')&& !preg_match('/mobile/i', request()->header('User-Agent')))
+<style>
+    .card{
+      margin-bottom:20px
+    }
+    </style>
 @else
     <style>
         footer {

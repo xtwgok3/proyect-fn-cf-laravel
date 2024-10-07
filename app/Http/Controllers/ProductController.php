@@ -28,7 +28,7 @@ class ProductController extends Controller
         // Validación para asegurarse de que el producto no esté vacío
         $request->validate([
             'name' => 'required|string|max:50|regex:/^[\p{L}\s]+$/u', // Solo letras y espacios
-            'description' => 'required|string|max:150|regex:/^[\p{L}\s.,;:!?-]+$/u', // Solo letras y algunos símbolos permitidos
+            'description' => 'required|string|max:100|regex:/^[\p{L}\s.,;:!?0-9-]+$/u', // Solo letras y algunos símbolos permitidos
             'price' => 'required|numeric|min:100',
             'category_id' => 'required|exists:categories,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif,heic|max:2048', ],
@@ -73,14 +73,14 @@ class ProductController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified PRODUCT in storage.
      */
     public function update(Request $request, Product $product)
     {
         // Validar los datos de entrada
         $validatedData = $request->validate([
             'name' => 'required|string|max:50|regex:/^[\p{L}\s]+$/u', // Solo letras y espacios
-            'description' => 'required|string|max:150|regex:/^[\p{L}\s.,;:!?-]+$/u', // Solo letras y algunos símbolos permitidos
+            'description' => 'required|string|max:100|regex:/^[\p{L}\s.,;:!?0-9-]+$/u', // Solo letras y NUM algunos símbolos permitidos
             'price' => 'required|numeric|min:100',
             'category_id' => 'required|exists:categories,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif,heic|max:2048',
@@ -95,33 +95,37 @@ class ProductController extends Controller
             'name.regex' => 'El nombre solo puede contener letras y espacios.',
             'description.regex' => 'La descripción solo puede contener letras y ciertos símbolos.',
         ]);
-    
-        // Comprobar si los datos han cambiado
+
+
+    // Comprobar si los datos han cambiado
+    $hasChanges = false;
+
+    // Compara los valores antiguos y nuevos
+    if (
+        $product->name != $validatedData['name'] ||
+        $product->description != $validatedData['description'] ||
+        $product->price != $validatedData['price'] ||
+        $product->category_id != $validatedData['category_id']
+        
+    ) {
+        // Hay cambios
+        $hasChanges = true;
+        
+    } else {
+        // No hay cambios
         $hasChanges = false;
-    
-        // Compara los valores antiguos y nuevos usando &&
-        if ((
-            $product->name === $validatedData['name'] &&
-            $product->description === $validatedData['description'] &&
-            $product->price === $validatedData['price'] &&
-            $product->category_id === $validatedData['category_id']
-        )) {
-            // Actualizar el producto con los datos validados
-            $product->update($this->getParams($request));
-            
-            $hasChanges = true;
-        }
-    
-        // Redireccionar con mensajes
-        if ($hasChanges) {
-            return redirect('/home')->with('success', 'Producto actualizado con éxito.');
-        } else {
-            return redirect()->back()->with('info', 'No realizaste cambios.');
-        }
     }
+
+    // Redireccionar con mensajes
+    if ($hasChanges) {
+        $product->update($this->getParams($request));
+        return redirect('/home')->with('success', 'Producto actualizado con éxito.');
+    } else {
+        return redirect()->back()->with('info', 'No realizaste cambios.');
+    }
+}
+
     
-
-
 
 
 

@@ -1,27 +1,44 @@
-<div class="root *:{{ session('theme', 'light') }}">
-    <div class="theme-element">Este es un elemento que cambiará de fondo.</div>
-    <div class="theme-element">Otro elemento que también cambiará de fondo.</div>
-    <button wire:click="toggleTheme" class="btn btn-secondary"> 
-        {{ $theme === 'light' ? 'Cambiar a Dark' : 'Cambiar a Light' }}
-    </button>
-</div>
+<i class="fas fa-adjust text-center items-center">
+    <button id="themeToggleButton" class="btn btn" style="background-color:none!important;border:none;!important;font-family: var(--bs-body-font-family)!important; font-size: 13px; font-weight: bold;"> </button>
+</i>
 
 <script>
-    Livewire.on('theme-updated', () => {
-        const app = document.getElementById('app');
-        const elements = document.querySelectorAll('[class*="session(theme)"]'); // Selecciona los elementos que contienen el tema
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggleButton = document.getElementById('themeToggleButton');
+    const root = document.documentElement;
 
-        // Cambia las clases del app
-        app.classList.toggle('light', app.classList.contains('dark-theme'));
-        app.classList.toggle('dark-theme', !app.classList.contains('dark-theme'));
+    // Obtener el tema actual desde localStorage o usar 'light' por defecto
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    
+    // Aplicar el tema inicial
+    if (currentTheme === 'dark') {
+        root.classList.add('dark-theme');
+        root.style.setProperty('--background-color', 'lightgray', 'important');
+        root.style.setProperty('--text-color', '#ffffff', 'important');
+        themeToggleButton.textContent = 'CLARO';
+    } else {
+        root.classList.remove('dark-theme');
+        root.style.setProperty('--background-color', 'white', 'important');
+        root.style.setProperty('--text-color', 'black', 'important');
+        themeToggleButton.textContent = 'OSCURO';
+    }
 
-        // Cambia el background color de los elementos
-        elements.forEach(element => {
-            if (app.classList.contains('dark-theme')) {
-                element.style.backgroundColor = '#333741'; // Color de fondo oscuro
-            } else {
-                element.style.backgroundColor = '#ffffff'; // Color de fondo claro
-            }
-        });
+    // Manejar el evento de clic para alternar el tema
+    themeToggleButton.addEventListener('click', () => {
+        const isDarkTheme = root.classList.toggle('dark-theme');
+        
+        if (isDarkTheme) {
+            root.style.setProperty('--background-color', 'lightgray', 'important');
+            root.style.setProperty('--text-color', '#ffffff', 'important');
+            localStorage.setItem('theme', 'dark');
+            themeToggleButton.textContent = 'CLARO';
+        } else {
+            root.style.setProperty('--background-color', 'white', 'important');
+            root.style.setProperty('--text-color', 'black', 'important');
+            localStorage.setItem('theme', 'light');
+            themeToggleButton.textContent = 'OSCURO';
+        }
     });
+});
+/* funciona la logica del toggle 23:46 06/10/24*/
 </script>

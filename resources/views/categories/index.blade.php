@@ -18,7 +18,7 @@
 @endif
 <hr>
 @section('content')
-        <div class="container" style="user-select: none;" ondragstart="return false;">
+        <div class="container mt-3 mb-3" style="user-select: none;" ondragstart="return false;">
             <h1>Categorías</h1>
 
             @if (session('success'))

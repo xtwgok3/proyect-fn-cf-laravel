@@ -28,7 +28,7 @@
     </div>
 @endif
 <hr>
-<div class="container" style="user-select: none;">
+<div class="container mt-3 mb-3" style="user-select: none;">
     <h1>Editar Categoría</h1>
 
     <form action="{{ route('categories.update', $category) }}" method="POST">

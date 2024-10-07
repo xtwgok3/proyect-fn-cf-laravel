@@ -34,3 +34,4 @@ class ThemeToggle extends Component
         return view('livewire.theme-toggle');
     }
 }
+/* funciona la logica del toggle 23:46 06/10/24*/

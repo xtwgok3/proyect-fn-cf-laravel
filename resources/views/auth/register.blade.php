@@ -1,20 +1,11 @@
 @extends('layouts.app')
 @if (request()->is('register')&& !preg_match('/mobile/i', request()->header('User-Agent')))
-    <style>
-        footer {
-            margin: 0;
-            width: 100%;
-            position: absolute !important;
-            bottom: 0;
-        }
-    </style>
 @else
     <style>
         footer {
             margin-top: 20px;
         }
 </style>
-    </style>
 @endif
 
 @section('content')

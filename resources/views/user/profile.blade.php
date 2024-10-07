@@ -3,7 +3,7 @@
 <style>.modal-open {overflow: hidden;}.modal-open .container {filter: blur(5px);}
 .modal-title {color: grey;}
 .modal-body {
-  font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif!important;
 }
 .modal-body p {font-size: 16px;}
 .card.container {width: 40rem;margin: 0 auto; }

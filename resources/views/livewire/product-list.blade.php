@@ -6,7 +6,21 @@
     justify-content: center;
     align-items: center;
     width: 100px;
-    text-align: center; }
+    text-align: center; 
+}</style>
+@else
+<style>
+#pdr {
+    display: flex;
+    flex-wrap: wrap; /* Para permitir que los elementos se ajusten */
+    justify-content: space-between; /* Espaciado uniforme entre elementos */
+    align-items: stretch; /* Asegura que todos los elementos tengan la misma altura */
+}
+H6 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 </style>
 @endif
 
@@ -59,7 +73,7 @@
             @if ($products->count() > 0)
                 <div id="pdr" class="col-md-9" ondragstart="return false;">
 
-                    <div class="row">
+                    <div class="row w-100">
                         @each('products._product', $products, 'product')
                     </div>
 

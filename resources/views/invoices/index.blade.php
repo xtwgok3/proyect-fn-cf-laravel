@@ -19,7 +19,7 @@
 @section('content')
 <div class="row d-flex justify-content-center mt-3" style="user-select: none;" ondragstart="return false;">
   <div class="col-sm-5">
-    <div class="card">
+    <div class="card themeable">
       <div class="card-body">
         <h3>Ordenes</h3>
         <table class="table">

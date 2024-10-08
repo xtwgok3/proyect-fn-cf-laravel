@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html class="{{ session('theme', 'light') }}" lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="scroll-behavior: smooth;">
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -14,15 +14,12 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-    <link rel="icon" href="{{ asset('LOGG2.png') }}" >
+    
+    <link rel="icon" href="https://es.wikipedia.org/static/favicon/wikipedia.ico">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    @livewireStyles
-    @livewireScripts
     
-
 <style>
 html,body {height: 100%;}
 body {display: flex;flex-direction: column;}
@@ -37,9 +34,12 @@ main {flex: 1;}
 
 <style>
     :root {
-    --background-color: #f8f9fa;
+    /*--background-color: #f8f9fa;*/
+    --background-color:#ecedee;
     --text-color: #212529;
-    --nav-bg-color: white;
+}
+div.card{
+    --bs-card-bg:#f9f9f9!important;
 }
 
 
@@ -52,13 +52,51 @@ body {
     margin-left: 20!important;
 }
 
+/* Estilos para el tema oscuro */
+.dark-theme {
+    --background-color: #b3b3b3;
+    --text-color: #2D2D2D;
+
+    .btn.btn-primary {
+        background-color: #676767 !important;
+        border-color: #676767 !important;
+    }
+    .btn.btn-secondary {
+        background-color: #5D666E !important;
+        border-color: #5D666E !important;
+    }
+    .btn.btn-warning {
+        background-color: #CF914D !important;
+        border-color: #CF914D !important;
+    }
+    .btn.btn-danger{
+        background-color: #bf1828 !important;
+        border-color: #bf1828 !important;
+    }
+    div.card{
+        --bs-card-bg:#ecedee!important;
+    }
+
+}
+
+.dark-theme-dropdown {
+    background-color: #AFADAD !important;
+}
+
+.dark-theme-card {
+   /*background-color: #A9A9A9 !important;*/
+    color: #474554 ;
+    
+    /*border-color: #8c8c8c !important;*/
+
+}
 </style>
-<!--style>.card {background-color: white}/*card product*/</style-->
+
 
 </head>
 
-<body class="{{ session('theme', 'light') }}">
-<div id="app" class="{{ session('theme', 'light') }}">
+<body >
+<div id="app" >
     <header>
         <nav class="navbar navbar-expand-md navbar-light shadow-sm " style="user-select: none;" ondragstart="return false;">
             <div class="container"><!-- rellena ancho: container-fluid-->
@@ -68,7 +106,7 @@ body {
     </header>
 </div>
 
-    <main class="container d-flex flex-column {{ session('theme', 'light') }}">
+    <main class="container d-flex flex-column" >
         <div class="row justify-content-center ">
             @yield('content')
         </div>
@@ -90,13 +128,12 @@ body {
             const product = this.getAttribute('data-id');
 
             fetch(`/add-to-cart/${product}`, {
-                    method: 'POST'
-                    , headers: {
-                        'Content-Type': 'application/json'
-                        , 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
-                            .getAttribute('content')
-                    }
-                    , body: JSON.stringify({
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: JSON.stringify({
                         quantity: 1
                     })
                 })
@@ -106,7 +143,6 @@ body {
                 });
         });
     });
-
 </script>
 
 </html>

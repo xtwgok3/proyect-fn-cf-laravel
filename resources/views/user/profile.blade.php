@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
-<style>.modal-open {overflow: hidden;}.modal-open .container {filter: blur(5px);}
+<style>.modal-open {overflow: hidden;}
+.modal-open .blur-background {
+    filter: blur(5px); /* Efecto de desenfoque */
+    transition: filter 0.2s ease-in-out;
+}
 .modal-title {color: grey;}
 .modal-body {
   font-family: Arial, sans-serif!important;
@@ -35,10 +39,14 @@
     background-color: #6c757d; /* Gray secondary button */
   }
 
+  .modal {
+    z-index: 1050; /* Bootstrap utiliza este z-index por defecto para los modales */
+}
+
 </style>
 
 @section('content')
-    <div class="card container d-flex flex-column align-items-left justify-start mt-3" style="user-select: none;" ondragstart="return false;">
+    <div class="card container d-flex flex-column align-items-left justify-start mt-3 themeable" style="user-select: none;" ondragstart="return false;">
         <h1 class="mt-3 text-center card-header mb-1" style="user-select: none; pointer-events: none;"><B>PERFIL DE USUARIO</B></h1>
 
         @if (session('success'))
@@ -67,6 +75,7 @@
         </ul>
     </div>
 @endif
+<div class="blur-background">
         <div class="form-group mt-3 line d-flex flex-column align-items-center">
             <img id="profile-image"
                  src="{{ Auth::user()->photo ? asset('storage/' . Auth::user()->photo) : 'https://fastly.picsum.photos/id/553/300/300.jpg?hmac=WE9FKJk4612U2gMl9W5K_2M4hVaqFL-Vg7Q7uCspY2A' }}"
@@ -110,6 +119,7 @@
                 onclick="window.location='{{ url('/') }}'">Atrás</button>
         </form>
     </div>
+</div>
     <!-- Modal -->
     <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel"
         aria-hidden="true">

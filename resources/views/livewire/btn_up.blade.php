@@ -1,3 +1,4 @@
+
 <style>
     #button-up {
         position: fixed;
@@ -75,33 +76,27 @@
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const button = document.getElementById("scroll-to-top");
-        const parent = button.closest("#button-up");
+document.addEventListener("DOMContentLoaded", function () {
+    const button = document.getElementById("scroll-to-top");
+    const parent = document.getElementById("button-up");
 
-        // Función para comprobar la posición del scroll y ajustar la visibilidad del botón
-        const toggleScrollToTop = () => {
-            const scrollTop = document.documentElement.scrollTop;
-            const show = scrollTop > 10; // Cambia este valor según desees
-            parent.style.opacity = show ? "1" : "0"; // Cambia la opacidad
-            parent.style.pointerEvents = show ? "auto" : "none"; // Permitir clics solo si es visible
-        };
+    const toggleScrollToTop = () => {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const show = scrollTop > 100; // Ajusta el valor para mostrar el botón al hacer más scroll
+        parent.style.opacity = show ? "1" : "0";
+        parent.style.pointerEvents = show ? "auto" : "none";
+    };
 
-        // Ejecutar la función al cargar la página para ajustar el botón correctamente
-        toggleScrollToTop();
+    toggleScrollToTop(); // Ejecutar cuando la página se carga
 
-        // Añadir el listener de scroll
-        window.addEventListener("scroll", () => {
-            requestAnimationFrame(toggleScrollToTop);
-        });
-
-        // Añadir evento de clic al botón
-        button.addEventListener("click", (e) => {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
+    window.addEventListener("scroll", () => {
+        requestAnimationFrame(toggleScrollToTop);
     });
+
+    button.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+});
+
 </script>

@@ -1,30 +1,34 @@
-@if (request()->is('home') && preg_match('/mobile/i', request()->header('User-Agent')))
-<style>
-#pdr {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    text-align: center; 
-}</style>
-@else
-<style>
-#pdr {
-    display: flex;
-    flex-wrap: wrap; /* Para permitir que los elementos se ajusten */
-    justify-content: space-between; /* Espaciado uniforme entre elementos */
-    align-items: stretch; /* Asegura que todos los elementos tengan la misma altura */
-}
-H6 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-</style>
-@endif
-
 <div>
+    @if (request()->is('home') && preg_match('/mobile/i', request()->header('User-Agent')))
+        <style>
+            #pdr {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100px;
+                text-align: center;
+            }
+        </style>
+    @else
+        <style>
+            #pdr {
+                display: flex;
+                flex-wrap: wrap;
+                /* Para permitir que los elementos se ajusten */
+                justify-content: space-between;
+                /* Espaciado uniforme entre elementos */
+                align-items: stretch;
+                /* Asegura que todos los elementos tengan la misma altura */
+            }
+
+            H6 {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        </style>
+    @endif
     <div class="container">
         <div class="row justify-content-center">
 
@@ -59,7 +63,7 @@ H6 {
                 @if (auth()->user()->isAdmin())
                     <div class="container mb-3">
                         <div class="row d-flex justify-content-center">
-                            <div id="btnpdr"class="col-sm-2 text-end">
+                            <div id="btnpdr" class="col-sm-2 text-end">
                                 <a href="{{ route('products.create') }}" class="btn btn-primary">Crear Producto</a>
                             </div>
                             <div class="col-sm-2 text-end mt-3 mt-sm-0">
@@ -82,9 +86,10 @@ H6 {
                     </div>
                 </div>
             @else
-                <div class="col-md-9" ondragstart="return false;" >
+                <div class="col-md-9" ondragstart="return false;">
                     <li class="list-group-item">
-                        <div class="text-center" style="user-select: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); padding: 7px; border-radius: 6px;">
+                        <div class="text-center"
+                            style="user-select: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); padding: 7px; border-radius: 6px;">
                             <strong>No se encontró el producto.</strong>
                         </div>
                     </li>

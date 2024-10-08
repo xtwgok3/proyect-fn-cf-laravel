@@ -1,4 +1,33 @@
-        <a class="navbar-brand " href="{{ url('/') }}" ondragstart="return false;">
+@if (preg_match('/mobile/i', request()->header('User-Agent')))
+<style>
+    #pdr {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    form .col-md-4 {
+        margin-top: 4px;
+    }
+
+    .navbar-nav .dropdown-menu {
+        position: absolute;
+        margin-top: -35px;
+    }
+
+    .w-100 {
+        width: 77% !important;
+        /*84*/
+    }
+    .start-100 {
+left: 55% !important;
+}
+</style>
+@endif
+       
+       <a class="navbar-brand " href="{{ url('/') }}" ondragstart="return false;">
             <img src="{{ asset('descarga.png') }}" alt="LOGO" style="height: 100px;" />
             <STRONG>VER TIENDA</STRONG>
         </a>

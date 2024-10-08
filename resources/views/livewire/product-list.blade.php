@@ -6,7 +6,6 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                width: 100px;
                 text-align: center;
             }
         </style>
@@ -29,6 +28,7 @@
             }
         </style>
     @endif
+
     <div class="container">
         <div class="row justify-content-center">
 

@@ -27,7 +27,11 @@
     @endforeach
 
     <li class="list-group-item d-flex justify-content-between">
-      <span>Total (ARS)</span>(INCLUYE IVA)
+      <span>IVA - 21% (ARS)</span>
+      <strong>${{ cart()->tax() }}</strong>
+    </li>
+    <li class="list-group-item d-flex justify-content-between">
+      <span>Total (ARS)</span>
       <strong>${{ cart()->total() }}</strong>
     </li>
     

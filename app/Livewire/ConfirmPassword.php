@@ -22,25 +22,22 @@ class ConfirmPassword extends Component
         $this->validate([
             'current_password' => 'required',
             'new_password' => 'required|min:8|confirmed',
-            'new_password_confirmation' => 'required|min:8|confirmed',
+            'new_password_confirmation' => 'required|min:8', // Solo necesario si no se usa 'confirmed'
         ], 
         [
-            'current_password.required' => '• La Contraseña Actual no puede estar vacia.',
-
-            'new_password.required' => '• Nueva Contraseña no puede estar vacia.', 
-            'new_password.min' => '• La Nueva Contraseña debe tener al menos 8 caracteres.', 
+            'current_password.required' => '• La Contraseña Actual no puede estar vacía.',
+            'new_password.required' => '• Nueva Contraseña no puede estar vacía.',
+            'new_password.min' => '• La Nueva Contraseña debe tener al menos 8 caracteres.',
             'new_password.confirmed' => '• La Confirmación de la Nueva Contraseña no coincide.',
-
-            'new_password_confirmation.required' => '• Confirmacion no puede estar vacia.', 
+            'new_password_confirmation.required' => '• Confirmación no puede estar vacía.',
             'new_password_confirmation.min' => '• La Nueva Contraseña debe tener al menos 8 caracteres.',
-            'new_password_confirmation.confirmed' => '• La Confirmación de la Nueva Contraseña no coincide.',
         ]);
-
+    
         if (!Hash::check($this->current_password, Auth::user()->password)) {
             session()->flash('error', 'La contraseña actual es incorrecta.');
             return;
         }
-
+    
         try {
             Auth::user()->update(['password' => Hash::make($this->new_password)]);
             session()->flash('success', 'Contraseña actualizada con éxito.');

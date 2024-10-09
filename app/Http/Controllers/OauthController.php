@@ -21,7 +21,7 @@ class OauthController extends Controller
         $user = User::firstOrCreate([
             'email' => $response->getEmail()
         ], [
-            'name' => $response->getName(),
+            'name' => $response->getName()?: 'Nombre Desconocido',
             'password' => 'testroot',
             'role' => User::CUSTOMER
         ]);

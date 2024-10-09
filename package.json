@@ -3,12 +3,17 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        
+    "serve": "cd public && php -S 127.0.0.1:8000",
+    "laravel:setup": "php artisan livewire:publish --assets && php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear && npm run dev",
+    "start": "concurrently \"npm run serve\" \"npm run laravel:setup\""
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
         "axios": "^1.6.4",
         "bootstrap": "^5.2.3",
+        "concurrently": "^9.0.1",
         "laravel-vite-plugin": "^1.0",
         "sass": "^1.56.1",
         "vite": "^5.0"

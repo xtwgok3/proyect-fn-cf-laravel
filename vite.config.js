@@ -18,8 +18,6 @@ export default defineConfig({
                 'resources/css/theme.css',
                 'resources/css/app.css',
                 'resources/css/home.css',
-                'resources/css/toast.css',
-                'resources/js/toast.js',
             ],
             refresh: true,
         }),

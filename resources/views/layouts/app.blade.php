@@ -30,7 +30,6 @@
     @vite(['resources/css/home.css','resources/css/theme.css',])
 
     @livewireStyles
-    <!-- cart js -->
 
 
 </head>

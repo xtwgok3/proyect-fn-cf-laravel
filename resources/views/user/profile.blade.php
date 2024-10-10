@@ -79,7 +79,7 @@
         <div class="form-group mt-3 line d-flex flex-column align-items-center">
             <img id="profile-image"
                  src="{{ Auth::user()->photo ? asset('storage/' . Auth::user()->photo) : 'https://fastly.picsum.photos/id/553/300/300.jpg?hmac=WE9FKJk4612U2gMl9W5K_2M4hVaqFL-Vg7Q7uCspY2A' }}"
-                 alt="{{ Auth::user()->name }}" class=""
+                 alt="{{ Auth::user()->name }}"
                  style="width: 90px; height: 90px; border: 2px solid #ddd; border-radius:20px;user-select: none; pointer-events: none;">
             <form action="{{ route('profile.deletePhoto') }}" method="POST" style="display:inline;">
               @csrf

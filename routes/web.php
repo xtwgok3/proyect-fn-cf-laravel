@@ -13,7 +13,30 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\NoticeInvoiceCreated;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Livewire\Auth\ResetPassword;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Http\Request;
 
+
+// Ruta para manejar la solicitud de restablecimiento de contraseña
+Route::get('/forgot-password', function () {
+  return view('auth.forgot-password');
+})->name('password.request');
+
+// Ruta para manejar la solicitud de restablecimiento de contraseña
+Route::post('/forgot-password', function (Request $request) {
+  $request->validate(['email' => 'required|email']);
+
+  $status = Password::sendResetLink(
+      $request->only('email')
+  );
+
+  return $status === Password::RESET_LINK_SENT
+      ? back()->with(['status' => __($status)])
+      : back()->withErrors(['email' => __($status)]);
+})->name('password.email');
+
+// Ruta para manejar la respuesta de restablecimiento de contraseña      FIN
 
 Auth::routes();
 

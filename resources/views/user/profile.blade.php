@@ -106,6 +106,9 @@
             <div class="form-group mt-3">
                 <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                     data-bs-target="#changePasswordModal"><b>Cambiar Contraseña<b></button>
+                        <a href="{{ route('password.request') }}" class="btn btn-danger">
+                            <b>Recuperar Contraseña</b>
+                        </a>
             </div>
             <hr> 
             <div class="form-group mt-3">

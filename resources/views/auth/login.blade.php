@@ -67,6 +67,12 @@
                   </div>
                 </div>
               </div>
+              <!-- Enlace para recuperar contraseña -->
+              <div class="row mt-3">
+                <div class="col-md-12 text-center">
+                    <a href="/forgot-password" class="text-muted">{{ __('¿Olvidaste tu contraseña?') }}</a>
+                </div>
+            </div>
             </form>
           </div>
         </div>

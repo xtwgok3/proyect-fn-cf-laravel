@@ -63,17 +63,19 @@ class UserProfileController extends Controller
     // Verificar si el usuario tiene una foto
     if ($user->photo) {
         // Construir la ruta correcta del archivo
+        $photoPath2 = public_path('storage/' . $user->photo);
         $photoPath = storage_path('app/public/' . $user->photo);
 
         // Comprobar si el archivo existe y eliminarlo
-        if (file_exists($photoPath)) {
-            unlink($photoPath);
+        if (file_exists($photoPath || $photoPath2)) {
+            unlink($photoPath && $photoPath2);
         }
 
         // Limpiar el campo 'photo' y guardar el usuario
 
         //dd($user->photo);
-        $user->update(['photo' => null]);
+        $user->photo = null;
+        $user->save();
 
         return redirect()->route('profile.show')->with('success', 'Foto de perfil eliminada con éxito.');
     } else {

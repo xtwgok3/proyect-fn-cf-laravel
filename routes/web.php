@@ -39,10 +39,10 @@ Route::post('/forgot-password', function (Request $request) {
 // Ruta para manejar la respuesta de restablecimiento de contraseña      FIN
 
 Auth::routes();
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function () {
-  Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-  Route::get('/home', [HomeController::class, 'index'])->name('home');
   Route::get('callback/{order:uuid}', [OrderController::class, 'callback'])->name('config');
 
   Route::post('add-to-cart/{product}', [ShoppingCartController::class, 'store']);

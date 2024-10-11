@@ -82,9 +82,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const toggleScrollToTop = () => {
         const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        const show = scrollTop > 100; // Ajusta el valor para mostrar el botón al hacer más scroll
+        const show = scrollTop > 10; // Ajusta el valor para mostrar el botón al hacer más scroll
         parent.style.opacity = show ? "1" : "0";
         parent.style.pointerEvents = show ? "auto" : "none";
+        if (scrollTop === 0) {
+            icon.style.transform = "rotate(-45deg)"; // Rotación cuando está en la parte superior
+        }
     };
 
     toggleScrollToTop(); // Ejecutar cuando la página se carga
@@ -96,6 +99,8 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", function (e) {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: "smooth" });
+        icon.style.transform = "rotate(-90deg)";
+
     });
 });
 

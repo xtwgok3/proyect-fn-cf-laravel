@@ -40,7 +40,7 @@
         padding: 0;
         --notification-background: #313e2c;
         --notification-primary: #aaec8a;
-        position: absolute;
+        position: fixed;
         width: max-content;
         left: 0;
         right: 0;

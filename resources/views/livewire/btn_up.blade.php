@@ -79,12 +79,25 @@
 document.addEventListener("DOMContentLoaded", function () {
     const button = document.getElementById("scroll-to-top");
     const parent = document.getElementById("button-up");
+    const icon = document.getElementById("scroll-to-top-icon");
+
+    const isMobile = function() {
+        const mobile = /Mobi|Android/i.test(navigator.userAgent);
+        console.log("¿Es un dispositivo móvil?", mobile);
+        return mobile;
+    };
+
+    // Llama a la función para verificar y mostrar en consola
+    isMobile();
 
     const toggleScrollToTop = () => {
         const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        const show = scrollTop > 100; // Ajusta el valor para mostrar el botón al hacer más scroll
+        const show = scrollTop > 10; // Ajusta el valor para mostrar el botón al hacer más scroll
         parent.style.opacity = show ? "1" : "0";
         parent.style.pointerEvents = show ? "auto" : "none";
+        if (scrollTop === 0) {
+            icon.style.transform = "rotate(-45deg)"; // Rotación cuando está en la parte superior
+        }
     };
 
     toggleScrollToTop(); // Ejecutar cuando la página se carga
@@ -96,6 +109,8 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", function (e) {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: "smooth" });
+        icon.style.transform = "rotate(-90deg)";
+
     });
 });
 

@@ -40,7 +40,7 @@
         padding: 0;
         --notification-background: #313e2c;
         --notification-primary: #aaec8a;
-        position: absolute;
+        position: fixed;
         width: max-content;
         left: 0;
         right: 0;
@@ -104,7 +104,6 @@
     </div>
 
     <!--button onclick="showNotification()" id="notifyBtn">Mostrar Notificación</button-->
-
     <div class="notification" id="notification">
         <div class="notification__body">
             <span>Producto agregado al carrito.</span>
@@ -113,12 +112,13 @@
         <div class="notification__progress"></div>
     </div>
 
+    
     <main class="container d-flex flex-column">
         <div class="row justify-content-center ">
             @yield('content')
         </div>
     </main>
-
+    
     <footer class="footer py-5 bg-dark text-light">
         @include('partials.footer')
     </footer>

@@ -8,9 +8,8 @@ Este proyecto consiste en una tienda online desarrollada en PHP/Laravel, que per
 |----------------- |
 |admin@admin  |
 |testroot|
+|https://Laravel.psy-electronics.com/|
 
-https://Laravel.psy-electronics.com/
----
 
 ## TARJETAS PARA PROBAR
 

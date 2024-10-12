@@ -4,6 +4,14 @@ Nombre participante: Carlos Adrián Alderete
 
 Este proyecto consiste en una tienda online desarrollada en PHP/Laravel, que permite a los administradores gestionar productos mediante un CRUD, incluyendo la adición, eliminación y modificación de productos, así como la administración de categorías. Los usuarios pueden agregar productos al carrito, obtener facturas descargables y recibirlas por correo electrónico. Se ha integrado el método de pago MercadoPago y se implementó una sección de búsqueda y filtrado de productos utilizando Livewire. Los usuarios pueden registrarse y acceder mediante un inicio de sesión tradicional o a través de GitHub.
 
+|USUARIO DE PRUEBA  PERMISOS ADMIN: | 
+|----------------- |
+|admin@admin  |
+|testroot|
+
+https://Laravel.psy-electronics.com/
+---
+
 ## TARJETAS PARA PROBAR
 
 ### MÉTODOS PAGO MERCADOPAGO (ARG)

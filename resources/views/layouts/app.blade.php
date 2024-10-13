@@ -27,7 +27,7 @@
     @livewireScripts
 
     <!-- Styles personalizados -->
-    @vite(['resources/css/home.css','resources/css/theme.css',])
+    @vite(['resources/css/home.css', 'resources/css/theme.css'])
 
     @livewireStyles
 
@@ -84,11 +84,10 @@
         background: linear-gradient(to right, var(--notification-background), var(--notification-primary));
         border-radius: inherit;
     }
-
-
-
-
 </style>
+
+
+
 
 <body>
     <div id="app">
@@ -102,6 +101,7 @@
             </nav>
         </header>
     </div>
+
 
     <!--button onclick="showNotification()" id="notifyBtn">Mostrar Notificación</button-->
 
@@ -122,22 +122,28 @@
     <footer class="footer py-5 bg-dark text-light">
         @include('partials.footer')
     </footer>
+
+    <!-- chat -->
+    <div>
+        @include('livewire.chat_bot')
+    </div>
+
 </body>
 <script>
-function showNotification() {
-    const notification = document.getElementById('notification');
-    const progressBar = document.querySelector('.notification__progress');
+    function showNotification() {
+        const notification = document.getElementById('notification');
+        const progressBar = document.querySelector('.notification__progress');
 
-    // Create a new style sheet for animations if it doesn't already exist
-    let styleSheet = document.querySelector('#notification-styles');
-    if (!styleSheet) {
-        styleSheet = document.createElement("style");
-        styleSheet.id = 'notification-styles';
-        document.head.appendChild(styleSheet);
-    }
+        // Create a new style sheet for animations if it doesn't already exist
+        let styleSheet = document.querySelector('#notification-styles');
+        if (!styleSheet) {
+            styleSheet = document.createElement("style");
+            styleSheet.id = 'notification-styles';
+            document.head.appendChild(styleSheet);
+        }
 
-    // Define the animations @keyframes
-    styleSheet.sheet.insertRule(`
+        // Define the animations @keyframes
+        styleSheet.sheet.insertRule(`
         @keyframes fade-in {
             0% {
                 opacity: 0;
@@ -157,7 +163,7 @@ function showNotification() {
         }
     `, styleSheet.sheet.cssRules.length);
 
-    styleSheet.sheet.insertRule(`
+        styleSheet.sheet.insertRule(`
         @keyframes fade-out {
             0% {
                 opacity: 1; /* Starts fully visible */
@@ -169,7 +175,7 @@ function showNotification() {
         }
     `, styleSheet.sheet.cssRules.length);
 
-    styleSheet.sheet.insertRule(`
+        styleSheet.sheet.insertRule(`
         @keyframes progress {
             from {
                 transform: scaleX(0); /* Comienza desde 0% */
@@ -180,28 +186,27 @@ function showNotification() {
         }
     `, styleSheet.sheet.cssRules.length);
 
-    // Apply inline style to create the fade-in animation
-    notification.style.display = 'block';
-    notification.style.animation = 'fade-in 1.2s forwards';
-    
-    // Reset and animate progress bar
-    progressBar.style.transform = 'scaleX(0)'; // Start progress bar at 0
-    void progressBar.offsetWidth; // Forzar reflujo para reiniciar la animación
-    progressBar.style.animation = 'progress 0.7s linear forwards'; // Animate progress bar filling
+        // Apply inline style to create the fade-in animation
+        notification.style.display = 'block';
+        notification.style.animation = 'fade-in 1.2s forwards';
 
-    // Hide the notification after 3 seconds with fade-out
-    setTimeout(() => {
-        notification.style.animation = 'fade-out 0.2s 1.2s linaer forwards';
-        
-        // Reset progress bar after fade-out animation
+        // Reset and animate progress bar
+        progressBar.style.transform = 'scaleX(0)'; // Start progress bar at 0
+        void progressBar.offsetWidth; // Forzar reflujo para reiniciar la animación
+        progressBar.style.animation = 'progress 0.7s linear forwards'; // Animate progress bar filling
+
+        // Hide the notification after 3 seconds with fade-out
         setTimeout(() => {
-            notification.style.display = 'none'; // Ocultar notificación
-            progressBar.style.transform = 'scaleX(0)'; // Reset the progress bar
-            progressBar.style.animation = 'none'; // Detener cualquier animación previa
-        }, 100); // Mismo tiempo que la animación de fade-out
-    }, 600); // Tiempo total que se muestra la notificación
-}
+            notification.style.animation = 'fade-out 0.2s 1.2s linaer forwards';
 
+            // Reset progress bar after fade-out animation
+            setTimeout(() => {
+                notification.style.display = 'none'; // Ocultar notificación
+                progressBar.style.transform = 'scaleX(0)'; // Reset the progress bar
+                progressBar.style.animation = 'none'; // Detener cualquier animación previa
+            }, 100); // Mismo tiempo que la animación de fade-out
+        }, 600); // Tiempo total que se muestra la notificación
+    }
 </script>
 
 </html>

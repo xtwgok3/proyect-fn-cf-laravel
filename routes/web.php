@@ -18,6 +18,15 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Http\Request;
 
 
+use App\Http\Controllers\ChatController;
+
+Route::post('/chat/response', [ChatController::class, 'getResponse']);
+Route::get('/chat/history', [ChatController::class, 'getHistory']);
+
+
+
+
+
 // Ruta para manejar la solicitud de restablecimiento de contraseña
 Route::get('/forgot-password', function () {
   return view('auth.forgot-password');

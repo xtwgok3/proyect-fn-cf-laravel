@@ -2,7 +2,7 @@
   <div class="card m-3 themeable" style="width: 15rem;">
 
     @if ($product->image)
-      <img src="{{ asset($product->image) }}" class="card-img-top" alt="..." style="width: 100%;">
+    <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top" alt="..." style="width: 100%;">
     @else
       <img src="https://placehold.co/600x400" class="card-img-top" alt="..."style="width: 100%; ">
     @endif

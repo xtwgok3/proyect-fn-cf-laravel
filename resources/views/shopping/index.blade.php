@@ -52,6 +52,16 @@
                                         <option value="">Choose...</option>
                                         <option>Buenos Aires</option>
                                         <option>Córdoba</option>
+                                        <option>Santiago Del Estero</option>
+                                        <option>Chaco</option>
+                                        <option>Tucumán</option>
+                                        <option>Entre Ríos</option>
+                                        <option>Neuquén</option>
+                                        <option>Riachuelo</option>
+                                        <option>San Juan</option>
+                                        <option>San Luis</option>
+                                        <option>Santa Fe</option>
+                                        <option>Santa Cruz</option>
                                     </select>
                                     <div class="invalid-feedback"> Please provide a valid state. </div>
                                 </div>

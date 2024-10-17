@@ -9,6 +9,10 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Auth\Passwords\CanResetPassword as ResetPasswordTrait;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature
 class User extends Authenticatable implements CanResetPassword
 {
     use HasFactory, Notifiable, ResetPasswordTrait;
@@ -21,6 +25,7 @@ class User extends Authenticatable implements CanResetPassword
         'email',
         'password',
         'role', // Ensure 'role' is included
+        'last_login',
     ];
 
     protected $hidden = [
@@ -34,6 +39,7 @@ class User extends Authenticatable implements CanResetPassword
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'role' => 'integer', // Add this line if needed
+            'last_login' => 'datetime', 
         ];
     }
 

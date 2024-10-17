@@ -75,10 +75,11 @@
     </button>
 </div>
 
-<script>
+<script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function () {
     const button = document.getElementById("scroll-to-top");
     const parent = document.getElementById("button-up");
+<<<<<<< HEAD
     const icon = document.getElementById("scroll-to-top-icon");
 
     const isMobile = function() {
@@ -97,10 +98,21 @@ document.addEventListener("DOMContentLoaded", function () {
         parent.style.pointerEvents = show ? "auto" : "none";
         if (scrollTop === 0) {
             icon.style.transform = "rotate(-45deg)"; // Rotación cuando está en la parte superior
+=======
+    const icon = document.getElementById("scroll-to-top-icon"); // Select the icon element
+
+    const toggleScrollToTop = () => {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const show = scrollTop > 10; // Show the button when scrolling down
+        parent.style.opacity = show ? "1" : "0";
+        parent.style.pointerEvents = show ? "auto" : "none";
+        if (scrollTop === 0) {
+            icon.style.transform = "rotate(-45deg)"; // Reset rotation when at the top
+>>>>>>> feature
         }
     };
 
-    toggleScrollToTop(); // Ejecutar cuando la página se carga
+    toggleScrollToTop(); // Execute on page load
 
     window.addEventListener("scroll", () => {
         requestAnimationFrame(toggleScrollToTop);
@@ -109,8 +121,12 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", function (e) {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: "smooth" });
+<<<<<<< HEAD
         icon.style.transform = "rotate(-90deg)";
 
+=======
+        icon.style.transform = "rotate(-90deg)"; // Rotate icon on click
+>>>>>>> feature
     });
 });
 

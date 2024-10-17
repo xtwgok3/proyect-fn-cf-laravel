@@ -1,216 +1,106 @@
-<!--style>
-    /* Estilos para el chat */
+<style>
+    /* Estilo del contenedor del chat */
     #chat-container {
         position: fixed;
-        bottom:5px;
-        /* Ajusta este valor para moverlo más arriba */
+        bottom: 5px;
         right: 100px;
-        width: 260px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
+        max-width: 260px;
+        border-radius: 20px;
         background: white;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        transition: height 0.3s;
-        /* Transición suave al minimizar */
-        z-index: 9999;
-    }
-
-    /* Estilo del chat minimizado */
-    .minimized {
-        height: 50px;
-        /* Altura cuando está minimizado*/
-        transition: width 0.3s;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         overflow: hidden;
-        /* Oculta el contenido */
+        z-index: 9999;
+        transition: height 0.3s ease-in-out;
+        opacity: 0.9;
     }
 
+    /* Estilo del encabezado del chat */
     #chat-header {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 5px;
         background: #f1f1f1;
         border-bottom: 1px solid #ccc;
+        font-weight: bold;
     }
-    
 
+    /* Mensaje del usuario (burbuja azul estilo iMessage) */
+    .user-message {
+        align-self: flex-end;
+        background-color: #007aff;
+        color: white;
+        padding: 10px;
+        margin: 5px 10px;
+        border-radius: 15px 15px 0 15px;
+        max-width: 75%;
+        word-wrap: break-word;
+    }
+
+    /* Mensaje del bot (burbuja gris estilo iMessage) */
+    .bot-message {
+        align-self: flex-start;
+        background-color: #e5e5ea;
+        color: black;
+        padding: 10px;
+        margin: 5px 10px;
+        border-radius: 15px 15px 15px 0;
+        max-width: 75%;
+        word-wrap: break-word;
+    }
+
+    /* Área de mensajes con desplazamiento automático */
+    #messages {
+        max-height: 250px;
+        overflow-y: auto;
+        display: flex !important;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    /* Estilo del área de entrada */
+    #input-area {
+        display: flex;
+        border-top: 1px solid #ccc;
+    }
+
+    /* Campo de entrada de texto */
+    #input {
+        flex: 1;
+        border: none;
+        padding: 10px;
+        font-size: 15px;
+        border-radius: 0;
+    }
+
+    /* Botón de enviar */
+    #send {
+        border: none;
+        background: #007aff;
+        color: white;
+        padding: 8px;
+        cursor: pointer;
+        font-size: 15px;
+    }
+
+    /* Botones de minimizar y cerrar */
     #minimize,
     #close {
         border: none;
         background: transparent;
         cursor: pointer;
-        font-size: 18px;
+        font-size: 20px;
     }
 
-    #messages {
-        max-height: 200px;
-        overflow-y: auto;
-        padding: 10px;
-    }
 
-    #input-area {
-        display: flex;
-    }
 
-    #input {
+    #chat-header span {
         flex: 1;
-        padding: 10px;
+        /* Permite que el span tome el espacio disponible */
+        text-align: center;
+        /* Centra el texto */
     }
-
-    #send {
-        padding: 10px;
-    }
-
-
-
-
-
-    .user-message {
-    text-align: left;
-    background-color: #e1ffc7; /* Color de fondo para el usuario */
-    padding: 5px;
-    border-radius: 5px;
-    margin: 5px 0;
-    max-width: 80%;
-    display: inline-block;
-}
-
-.bot-message {
-    text-align: right;
-    background-color: #c7e1ff; /* Color de fondo para el bot */
-    padding: 5px;
-    border-radius: 5px;
-    margin: 5px 0;
-    max-width: 80%;
-    display: inline-block;
-}
-
-#messages {
-    max-height: 200px;
-    overflow-y: auto;
-    padding: 10px;
-    display: flex;
-    flex-direction: column; /* Asegura que los mensajes se apilen verticalmente */
-}
-</style-->
-
-<style>
-    /* Estilo del contenedor del chat */
-#chat-container {
-    position: fixed;
-    bottom: 5px;
-    right: 100px;
-    width: 260px;
-    border-radius: 20px;
-    background: white;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    z-index: 9999;
-    transition: height 0.3s ease-in-out;
-}
-
-/* Estilo del encabezado del chat */
-#chat-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    background: #f1f1f1;
-    border-bottom: 1px solid #ccc;
-    font-weight: bold;
-}
-
-/* Mensaje del usuario (burbuja azul estilo iMessage) */
-.user-message {
-    align-self: flex-end;
-    background-color: #007aff;
-    color: white;
-    padding: 10px;
-    margin: 5px 10px;
-    border-radius: 15px 15px 0 15px;
-    max-width: 75%;
-    word-wrap: break-word;
-}
-
-/* Mensaje del bot (burbuja gris estilo iMessage) */
-.bot-message {
-    align-self: flex-start;
-    background-color: #e5e5ea;
-    color: black;
-    padding: 10px;
-    margin: 5px 10px;
-    border-radius: 15px 15px 15px 0;
-    max-width: 75%;
-    word-wrap: break-word;
-}
-
-/* Área de mensajes con desplazamiento automático */
-#messages {
-    max-height: 250px;
-    overflow-y: auto;
-    display: flex!important;
-    flex-direction: column;
-    padding: 10px;
-}
-
-/* Estilo del área de entrada */
-#input-area {
-    display: flex;
-    border-top: 1px solid #ccc;
-}
-
-/* Campo de entrada de texto */
-#input {
-    flex: 1;
-    border: none;
-    padding: 10px;
-    font-size: 15px;
-    border-radius: 0;
-}
-
-/* Botón de enviar */
-#send {
-    border: none;
-    background: #007aff;
-    color: white;
-    padding: 8px;
-    cursor: pointer;
-    font-size: 15px;
-}
-
-/* Botones de minimizar y cerrar */
-#minimize, #close {
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-size: 20px;
-}
-
-
-
-#chat-header span {
-    flex: 1; /* Permite que el span tome el espacio disponible */
-    text-align: center; /* Centra el texto */
-}
 </style>
-
-
-
-
-<!--div id="chat-container" onclick="toggleChat()" style="user-select: none;">
-    <div id="chat-header" >
-        <span>Chat</span>
-        <div>
-            <button id="minimize"></button>
-            <button id="close">X</button>
-        </div>
-    </div>
-    <div id="messages" style="display: none;"></div> 
-
-    <div id="input-area" style="display: none;">
-        <input type="text" id="input" placeholder="Escribe tu mensaje..." />
-        <button id="send">Enviar</button>
-    </div>
-</div-->
 
 <div id="chat-container" onclick="toggleChat()">
     <div id="chat-header">
@@ -244,8 +134,8 @@
             .then(response => response.json())
             .then(data => {
                 data.forEach(msg => {
-                    messagesDiv.innerHTML += `<p><strong>Yo:</strong> ${msg.user_message}</p>`;
-                    messagesDiv.innerHTML += `<p><strong>Bot:</strong> ${msg.bot_response}</p>`;
+                    messagesDiv.innerHTML += `<p><strong style="color:lightgrey;">Yo:</strong> ${msg.user_message}</p>`;
+                    messagesDiv.innerHTML += `<p><strong style="color:red;">Bot:</strong> ${msg.bot_response}</p>`;
                 });
                 scrollToBottom(); // Hacer scroll al cargar el historial
             });
@@ -255,26 +145,29 @@
     };
 
     const sendMessage = () => {
-    const userMessage = inputField.value.trim();
-    if (userMessage) {
-        messagesDiv.innerHTML += `<p class="user-message"><strong>Yo:</strong> ${userMessage}</p>`;
-        inputField.value = '';
+        const userMessage = inputField.value.trim();
+        if (userMessage) {
+            messagesDiv.innerHTML += `<p class="user-message"><strong style="color:lightgrey;">Yo:</strong> ${userMessage}</p>`;
+            inputField.value = '';
 
-        fetch('/chat/response', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify({ message: userMessage })
-        })
-        .then(response => response.json())
-        .then(data => {
-            messagesDiv.innerHTML += `<p class="bot-message"><strong>Bot:</strong> ${data.response}</p>`;
-            scrollToBottom(); // Hacer scroll al agregar respuesta del bot
-        });
-    }
-};
+            fetch('/chat/response', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({
+                        message: userMessage
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    messagesDiv.innerHTML +=
+                    `<p class="bot-message"><strong style="color:red;">Bot:</strong> ${data.response}</p>`;
+                    scrollToBottom(); // Hacer scroll al agregar respuesta del bot
+                });
+        }
+    };
 
 
     // Función para hacer scroll al final del chat

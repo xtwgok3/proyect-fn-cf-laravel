@@ -141,7 +141,7 @@
                     </a>
 
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" wire:click="toggleTheme" style="width: 158px; height: 31.05px;"">
+                    <a class="dropdown-item" wire:click="toggleTheme" style="width: 158px; height: 31.05px;">
                         @livewire('theme-toggle')
                     </a>
 

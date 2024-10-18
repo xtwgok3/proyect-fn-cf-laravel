@@ -52,7 +52,7 @@
                             placeholder="Buscar producto...">
                     </div>
                     <div class="col-md-4">
-                        <button type="submit" class="btn btn-primary">Buscar</button>
+                        <button type="submit" class="btn btn-primary" style="width: 102px;">Buscar</button>
                         <button type="button" class="btn btn-secondary" wire:click="resetFilters">Restablecer</button>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                 <div class="container mb-3">
                     <div class="row d-flex justify-content-center">
                         <div id="btnpdr" class="col-sm-2 text-end">
-                            <a href="{{ route('products.create') }}" class="btn btn-primary">Crear Producto</a>
+                            <a href="{{ route('products.create') }}" class="btn btn-primary" style="width: 130px;">Crear Producto</a>
                         </div>
                         <div class="col-sm-2 text-end mt-3 mt-sm-0">
                             <a href="{{ route('categories.index') }}" class="btn btn-secondary">Editar Categoria</a>

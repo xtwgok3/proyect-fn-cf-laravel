@@ -46,7 +46,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'testroot
 
 server {
     server_name diploy.sh;
-    root /var/www/proyect-laravel-fn/public;
+    root /var/www/proyect-fn-cf-laravel/public;
 
     index index.php;
 
@@ -78,7 +78,7 @@ nvm install 20
 
 [program:laravel-worker]
 process_name=%(program_name)s_%(process_num)02d
-command=php /var/www/proyect-laravel-fn/artisan queue:work
+command=php /var/www/proyect-fn-cf-laravel/artisan queue:work
 autostart=true
 autorestart=true
 stopasgroup=true

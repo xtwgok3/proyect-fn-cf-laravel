@@ -1,7 +1,7 @@
-@servers(['web' => ['root@34.225.9.184']])
+@servers(['web' => ['root@192.168.1.55']])
 
 @task('deploy', ['on' => 'web'])
-  cd /var/www/proyect-laravel-fn
+  cd /var/www/proyect-fn-cf-laravel
 
   git pull origin --rebase main
 

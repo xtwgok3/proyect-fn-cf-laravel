@@ -1,5 +1,5 @@
 <i class="fas fa-adjust text-center items-center" style="position: relative; top:-5px; left:-1px;">
-    <button id="themeToggleButton" class="btn btn" style="background-color:none!important;border:none;!important;font-family: var(--bs-body-font-family)!important; font-size: 13px; font-weight: bold;left: -12px; position: relative;top:1px;"> </button>
+    <button id="themeToggleButton" class="btn btn" style="background-color:none!important;border:none;!important;font-family: var(--bs-body-font-family)!important; font-size: 13px; font-weight: bold;left: -12px; position: relative;"> </button>
 </i>
 
 <script>

@@ -130,7 +130,8 @@
 
     // Cargar el historial al cargar la página
     window.onload = () => {
-        fetch('/chat/history')
+        //fetch('/chat/history')
+        fetch('')
             .then(response => response.json())
             .then(data => {
                 data.forEach(msg => {

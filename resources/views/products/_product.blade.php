@@ -1,5 +1,5 @@
 <div class="col-sm-4" style="user-select: none;" ondragstart="return false;">
-  <div class="card m-3 themeable" style="width: 15rem;">
+  <div class="card m-3 themeable" style="max-width: 15rem;min-width:14rem;">
 
     @if ($product->image)
     <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top" alt="..." style="width: 100%;">

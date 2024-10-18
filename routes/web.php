@@ -21,7 +21,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ChatController;
 
 Route::post('/chat/response', [ChatController::class, 'getResponse']);
-Route::get('/chat/history', [ChatController::class, 'getHistory']);
+//Route::get('/chat/history', [ChatController::class, 'getHistory']);
 
 
 

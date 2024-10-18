@@ -27,6 +27,35 @@
         }
     </style>
     @endif
+<style>
+@media (min-width: 992px) and (max-width: 1199px) {
+    .col-sm-4 {
+        flex: 0 0 auto;
+        width: 33.333333%;
+        
+    }
+    .col-sm-2 {
+        flex: 0 0 auto;
+        width: 20.666667%;}
+    }
+
+@media (min-width: 541px) and (max-width: 991px) {
+    .col-sm-4 {
+        flex: 0 0 auto;
+        width: 49.333333%;
+    }
+    .col-sm-2 {
+        flex: 0 0 auto;
+        width: 20.666667%;}
+    }
+@media (max-width: 576px) {
+    .col-sm-2 {
+        flex: 0 0 auto;
+        width: 28.666667%;
+    }
+}
+
+</style>
 
     <div class="container">
         <div class="row justify-content-center">
@@ -63,10 +92,10 @@
                 <div class="container mb-3">
                     <div class="row d-flex justify-content-center">
                         <div id="btnpdr" class="col-sm-2 text-end">
-                            <a href="{{ route('products.create') }}" class="btn btn-primary" style="width: 130px;">Crear Producto</a>
+                            <a href="{{ route('products.create') }}" class="btn btn-primary" style="max-width: 130px;">Crear Producto</a>
                         </div>
-                        <div class="col-sm-2 text-end mt-3 mt-sm-0">
-                            <a href="{{ route('categories.index') }}" class="btn btn-secondary">Editar Categoria</a>
+                        <div class="col-sm-2 text-end mt-sm-0">
+                            <a href="{{ route('categories.index') }}" class="btn btn-secondary" style="max-width: 130px;">Editar Categoria</a>
                         </div>
                     </div>
                 </div>

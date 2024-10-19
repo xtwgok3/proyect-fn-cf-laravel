@@ -11,13 +11,13 @@ Este proyecto consiste en una tienda online desarrollada en PHP/Laravel, que per
 |------------------------|------------------------------|
 | 🔑 **Permisos Admin**   |                              |
 | **🛡️ User:**         | `admin@admin`                |
-| **🔒 PW:**      | `testroot`                   |
+| **🔒 PW:**      | `test123`                   |
 |                        |                              |
 | 🌐 **URL de Acceso:**   | [Acceder a la WEB](https://Laravel.psy-electronics.com) |
 |                        |                              |
 | 🔑 **Permisos Usuario** |                              |
 | **🛡️ User:**         | `user@user`                  |
-| **🔒 PW:**      | `testroot`                   |
+| **🔒 PW:**      | `test123`                   |
 
 ---
 

@@ -1,0 +1,44 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-l0sNRNKZ.js",
+    "name": "app",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/css/home.css": {
+    "file": "assets/home-DGAd1icf.css",
+    "src": "resources/css/home.css",
+    "isEntry": true
+  },
+  "resources/css/theme.css": {
+    "file": "assets/theme-BKHmUhNZ.css",
+    "src": "resources/css/theme.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-DLPuX8Hn.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/bootstrap.js"
+    ]
+  },
+  "resources/js/bootstrap.js": {
+    "file": "assets/bootstrap-CrG75o6_.js",
+    "name": "bootstrap",
+    "src": "resources/js/bootstrap.js",
+    "isEntry": true
+  },
+  "resources/js/cart.js": {
+    "file": "assets/cart-D_C6M6W2.js",
+    "name": "cart",
+    "src": "resources/js/cart.js",
+    "isEntry": true
+  },
+  "resources/sass/app.scss": {
+    "file": "assets/app-DxT0CwCG.css",
+    "src": "resources/sass/app.scss",
+    "isEntry": true
+  }
+}

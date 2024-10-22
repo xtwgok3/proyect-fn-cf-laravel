@@ -13,6 +13,8 @@
 
     <title>{{ config('app.title', 'Laravel PROYECTO') }}</title>
     <link rel="preload" as="image" href="{{ asset('descarga3.png') }}">
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css?family=Nunito" media="print" onload="this.media='all'">
@@ -20,10 +22,10 @@
         <link rel="stylesheet" href="https://fonts.bunny.net/css?family=Nunito">
     </noscript>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css"
         media="print" onload="this.media='all'">
     <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css">
     </noscript>
 
 

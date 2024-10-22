@@ -4,6 +4,13 @@ use Illuminate\Support\Str;
 
 return [
 
+// ... session secured
+
+'secure' => env('SESSION_SECURE_COOKIE', true),
+'http_only' => env('SESSION_HTTP_ONLY', true),
+'same_site' => env('SESSION_SAME_SITE', 'lax'),
+
+
     /*
     |--------------------------------------------------------------------------
     | Default Session Driver

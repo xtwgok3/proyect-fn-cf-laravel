@@ -79,7 +79,7 @@
 @endif
 
 <a class="navbar-brand " href="{{ url('/') }}" ondragstart="return false;">
-    <img src="{{ asset('descarga3.png') }}" width="240" height="100"  alt="LOGO"/>
+    <img src="{{ asset('descarga3.png') }}" width="224" height="100"  alt="LOGO"/>
     <STRONG>VER TIENDA</STRONG>
 </a>
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

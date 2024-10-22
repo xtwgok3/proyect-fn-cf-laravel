@@ -102,18 +102,18 @@
     }
 </style>
 
-<div id="chat-container" onclick="toggleChat()">
-    <div id="chat-header">
+<div id="chat-container" onclick="toggleChat()" aria-labelledby="chat-header" role="dialog">
+    <div id="chat-header" role="heading" aria-level="1">
         <span>Chat</span>
         <div>
-            <button id="minimize"></button>
-            <button id="close">X</button>
+            <button id="minimize" aria-label="Maximizar chat"></button>
+            <button id="close"aria-label="Cerrar chat">X</button>
         </div>
     </div>
     <div id="messages"></div>
     <div id="input-area">
-        <input type="text" id="input" placeholder="Escribe tu mensaje..." />
-        <button id="send">Enviar</button>
+        <input type="text" id="input" placeholder="Escribe tu mensaje..." aria-label="Campo de entrada de mensaje"/>
+        <button id="send" aria-label="Enviar mensaje">Enviar</button>
     </div>
 </div>
 

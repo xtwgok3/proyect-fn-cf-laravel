@@ -50,8 +50,11 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:50', 'regex:/^[\p{L} .-]+$/u'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email:rfc', 'max:255', 'unique:users', 'email:dns'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ], [
+            'email.dns' => 'El dominio del correo electrónico no tiene registros DNS válidos.',
+            'email.email' => 'Por favor, introduzca una dirección de correo electrónico válida.',
         ]);
     }
 

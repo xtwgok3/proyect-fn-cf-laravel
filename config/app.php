@@ -18,6 +18,10 @@ return [
 
     'title' => env('APP_TITLE', 'Laravel PROYECTO'),
 
+
+'url' => env('APP_URL', 'https://tu-dominio.com'),
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

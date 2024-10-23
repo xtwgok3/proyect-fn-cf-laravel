@@ -146,29 +146,38 @@
     };
 
     const sendMessage = () => {
-        const userMessage = inputField.value.trim();
-        if (userMessage) {
-            messagesDiv.innerHTML += `<p class="user-message"><strong style="color:lightgrey;">Yo:</strong> ${userMessage}</p>`;
-            inputField.value = '';
+    const userMessage = inputField.value.trim();
+    if (userMessage) {
+        messagesDiv.innerHTML += `<p class="user-message"><strong style="color:lightgrey;">Yo:</strong> ${userMessage}</p>`;
+        inputField.value = '';
 
-            fetch('/chat/response', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({
-                        message: userMessage
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    messagesDiv.innerHTML +=
-                    `<p class="bot-message"><strong style="color:red;">Bot:</strong> ${data.response}</p>`;
-                    scrollToBottom(); // Hacer scroll al agregar respuesta del bot
-                });
-        }
-    };
+        fetch('/chat/response', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({
+                message: userMessage
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            messagesDiv.innerHTML += `<p class="bot-message"><strong style="color:red;">Bot:</strong> ${data.response}</p>`;
+            scrollToBottom(); // Hacer scroll al agregar respuesta del bot
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            messagesDiv.innerHTML += `<p class="bot-message"><strong style="color:red;">Bot:</strong> Hubo un error al procesar tu mensaje.</p>`;
+            scrollToBottom(); // Hacer scroll en caso de error
+        });
+    }
+};
 
 
     // Función para hacer scroll al final del chat

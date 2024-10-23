@@ -1,5 +1,6 @@
 @extends('layouts.app') 
 
+@section('content') 
 @if (request()->is('login')&& !preg_match('/mobile/i', request()->header('User-Agent')))
 <style>
 .card{
@@ -15,7 +16,6 @@
 </style>
 @endif
 
-@section('content') 
 <div class="container mt-3" style="user-select: none;" ondragstart="return false;">
     <div class="row justify-content-center ">
       <div class="col-md-7 items-center">

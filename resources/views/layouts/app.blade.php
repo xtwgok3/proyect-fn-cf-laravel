@@ -13,7 +13,6 @@
     <meta name="keywords" content="palabras, clave, aquí">
 
     <title>{{ config('app.title', 'Laravel PROYECTO') }}</title>
-    <link rel="preload" as="image" href="{{ asset('descarga3.png') }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 

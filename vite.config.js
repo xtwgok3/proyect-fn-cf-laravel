@@ -18,7 +18,7 @@ export default defineConfig({
                 'resources/js/bootstrap.js',
                 'resources/css/theme.css',
                 'resources/css/app.css',
-                'resources/css/home.css',
+		'resources/css/home.css',
             ],
             refresh: true,
         }),

@@ -16,11 +16,11 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-    <!-- Fonts -->
+    <!-- Fonts 
     <link rel="stylesheet" href="https://fonts.bunny.net/css?family=Nunito" media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="https://fonts.bunny.net/css?family=Nunito">
-    </noscript>
+    </noscript> -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css"
         media="print" onload="this.media='all'">

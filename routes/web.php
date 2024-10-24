@@ -30,7 +30,7 @@ Route::post('/chat/response', [ChatController::class, 'getResponse']);
 // Ruta para manejar la solicitud de restablecimiento de contraseña
 Route::get('/forgot-password', function () {
   return view('auth.forgot-password');
-})->name('password.request');
+})->name('password.forgot');
 
 // Ruta para manejar la solicitud de restablecimiento de contraseña
 Route::post('/forgot-password', function (Request $request) {
@@ -43,7 +43,7 @@ Route::post('/forgot-password', function (Request $request) {
   return $status === Password::RESET_LINK_SENT
       ? back()->with(['status' => __($status)])
       : back()->withErrors(['email' => __($status)]);
-})->name('password.email');
+})->name('password.sendLink');
 
 // Ruta para manejar la respuesta de restablecimiento de contraseña      FIN
 

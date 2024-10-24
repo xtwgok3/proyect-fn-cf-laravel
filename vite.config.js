@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import viteCompression from 'vite-plugin-compression';
 
 export default defineConfig({
     server: {
@@ -18,14 +17,9 @@ export default defineConfig({
                 'resources/js/bootstrap.js',
                 'resources/css/theme.css',
                 'resources/css/app.css',
-		'resources/css/home.css',
+                'resources/css/home.css',
             ],
             refresh: true,
-        }),
-        viteCompression({ // Configura el plugin de compresión
-            algorithm: 'gzip', // gzip
-            threshold: 10240,
-            deleteOriginFile: false,
         }),
     ],
 });

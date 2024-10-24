@@ -16,37 +16,24 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-    <!-- Fonts 
-    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=Nunito" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="https://fonts.bunny.net/css?family=Nunito">
-    </noscript> -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css"
-        media="print" onload="this.media='all'">
+    <!-- Fonts-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css">
     </noscript>
 
-
     <link rel="icon" href="{{ asset('LOGG3.png') }}">
 
     <!-- Scripts -->
-
-
-    <!-- Styles -->
-
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @vite(['resources/js/cart.js'])
     @livewireScripts
 
     <!-- Styles personalizados -->
     @vite(['resources/css/home.css', 'resources/css/theme.css'])
-
     @livewireStyles
-
-
 </head>
+
 <style>
     .notification {
         box-sizing: border-box;

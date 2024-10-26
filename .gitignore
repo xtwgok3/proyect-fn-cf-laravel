@@ -20,3 +20,6 @@ yarn-error.log
 /.vscode
 laravel.log
 nohup.out
+# Ignorar la carpeta .pnpm-store
+.pnpm-store/
+
